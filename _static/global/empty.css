@@ -1,0 +1,15 @@
+var changeButtonState = function(type) {
+   // Play/Pause button
+   if (type == 'playpause') {
+      if (video.paused || video.ended) {
+         playpause.setAttribute('data-state', 'play');
+      }
+      else {
+         playpause.setAttribute('data-state', 'pause');
+      }
+   }
+   // Mute button
+   else if (type == 'mute') {
+      mute.setAttribute('data-state', video.muted ? 'unmute' : 'mute');
+   }
+}

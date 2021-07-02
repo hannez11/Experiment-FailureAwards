@@ -1,0 +1,125 @@
+<style>
+  
+    /* space between buttons */
+    .btn-space {
+        margin-right: 50px;
+    }
+    
+    .btn:focus, .btn:active {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+    </style>
+  
+  
+  
+  {% extends "global/Page.html" %}
+  {% load otree static %}
+  
+  {% block head_title %}
+  Decision_1
+  {% endblock %}
+  
+  {% block title %}
+  
+  {% endblock %}
+  
+  {% block scripts %}
+  
+  <script src="{% static 'back_button_v1/js/prev_next_button.js' %}"></script>
+  
+  {% endblock %}
+  
+  
+  {% block styles %}
+  
+  <link href="{% static 'back_button_v1/css/custom.css' %}" rel="stylesheet">
+  
+  {% endblock %}
+  
+  {% block content %}
+  
+  
+  
+  
+    <div class="card">
+    <div class="card-header">
+      <p><span style="font-weight: 400">The management board now wants to know <strong>which of the two projects</strong> you want to start</span>.</p>
+      <p><span style="font-weight: 400">Would you like to start the project <strong>Smart Vacuum Robot</strong> or the project <strong>Smart Mop Robot</strong>?</span></p>
+      <p>Please click on the project you would like to start:</p>
+    </div>
+    <div class="card-body">
+        <br>
+        <div style="text-align:center">
+            <button type="button" class="btn btn-secondary btn-lg btn-space" onclick="save_coffee()" id="coffee">Smart Vacuum Robot</button>
+            <button type="button" class="btn btn-secondary btn-lg btn-space" onclick="save_tee()" id="tee">&#8205; &#8205; &#8205; Smart Mop Robot &#8205; &#8205; &#8205;</button>
+        </div>
+        <br>
+        <hr>
+  
+        <div class="alert alert-primary" role="alert" id="selection" style="text-align: center;">
+            I want to start the project ...! 
+        </div>
+        <br>
+        <div class="form-check required">
+          <label class="form-check-label  field-initial_checkbox" for="check">
+            <input id="check" type="checkbox" required="" class="form-check-input">
+            I made my decision
+          </label>
+        </div>
+    </div>
+</div>
+  
+<br>
+  
+
+<button type="button" class="nexttab btn-primary btn next" id="nextbutton" data-toggle="tooltip" title="Please click on the project you would like to launch">Submit decision</button>
+
+<br><br><br>
+
+{% include "global/FooterContentWithInitialA3.html" %}
+
+<input type="hidden" name="timer_initialdecision" id="timer_initialdecision" value=0>
+<input type="hidden" name="initial_choices" id="initial_choices"> 
+
+
+<script>
+
+    let decision_array = []
+    function save_tee() {
+        //$('#nextbutton').prop('disabled',false); //decision has to be made before nextbutton is clickable
+        $('#nextbutton').removeAttr("type"); // removes type attribute from next button so form can be submitted
+        $('#nextbutton').removeAttr('data-original-title'); // removes tooltip
+        $('#tee').css({"background-color": "#007bff", "border-color": "#007bff"}); //highlight
+        $('#coffee').css({"background-color": "#6c757d", "border-color": "#6c757d"}); //unhighlight
+        $('#selection').html("I would like to start the project <b>Smart Mop Robot</b>!");
+        decision_array.push("Mop Robot") //push click to array
+        $("#initial_choices").val(decision_array); //save array
+    }
+    
+    function save_coffee() {
+        $('#nextbutton').removeAttr("type"); // removes type attribute from next button so form can be submitted
+        $('#nextbutton').removeAttr('data-original-title'); // removes tooltip
+        $('#tee').css({"background-color": "#6c757d", "border-color": "#6c757d"});
+        $('#coffee').css({"background-color": "#007bff", "border-color": "#007bff"});
+        $('#selection').html("I would like to start the project <b>Smart Vacuum Robot</b>!");
+        decision_array.push("Vacuum Robot")
+        $("#initial_choices").val(decision_array);
+    }
+    
+    
+    var sec = 0; // global variable
+    
+    // increasing timer
+    function pad ( val ) { return val > 9 ? val : "0" + val; }
+    setInterval( function(){
+        $("#seconds").html(pad(++sec));
+        $("#timer_initialdecision").val(sec); // store seconds spent on page in hidden field
+    }, 1000);
+    
+    $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+    });
+  </script>
+
+{% endblock %}

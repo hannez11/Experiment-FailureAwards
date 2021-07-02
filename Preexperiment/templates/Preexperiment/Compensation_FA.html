@@ -1,0 +1,155 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+Compensation
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+<h4>Total Compensation</h4><hr>
+<table class="table table-striped">
+  <colgroup>
+    <col width="47%">
+    <col width="53%">
+  </colgroup>
+  <tbody>
+    <tr>
+      <th scope="row">Fixed compensation</th>
+      <td style="text-align: center;">{{ session.config.participation_fee }}</td>
+    </tr>
+    <tr>
+      <th colspan="2">Variable compensation</th>
+    </tr>
+    <tr>
+      <td scope="row">In year 2021 you decided to ...</th>
+        {% if player.initial_decision == "Vacuum Robot" and subsession.framing != "C0" %}
+
+      <td style="text-align: center;">launch the Smart {{ player.initial_decision }} project. This project does not qualify for a Courage Award.</td>
+      
+      {% elif player.initial_decision == "Mop Robot"  and subsession.framing != "C0" %}
+
+      <td style="text-align: center;">launch the Smart {{ player.initial_decision }} project. This project generally qualifies for a Courage Award.</td>
+
+      {% else %}
+
+      <td style="text-align: center;">launch the Smart {{ player.initial_decision }} project.</td>
+      {% endif %}
+    </tr>
+
+
+      <td scope="row">In year 2022 you decided to ...</th>
+        {% if player.sub1_decision == "terminate" and subsession.framing != "C0" and player.initial_decision == "Mop Robot" %}
+
+        <td style="text-align: center;">terminate your project and invest into the alternative project. Thereby you earned {{ Constants.alternative1_boni|c }} and you received {{ Constants.failure_award|c }} from the Courage Award.</td>
+        
+        {% elif player.sub1_decision == "terminate" and subsession.framing != "C0" and player.initial_decision == "Vacuum Robot" %}
+  
+        <td style="text-align: center;">terminate your project and invest into the alternative project. Thereby you earned {{ Constants.alternative1_boni_control|c }}.</td>
+  
+        {% elif player.sub1_decision == "terminate" and subsession.framing == "C0" %}
+  
+        <td style="text-align: center;">terminate your project and invest into the alternative project. Thereby you earned {{ Constants.alternative1_boni_control|c }}</td>
+        
+        {% else %}
+  
+        <td style="text-align: center;">continue your project</td>
+        {% endif %}
+
+      </tr>
+
+    {% if player.sub1_decision == "continue" %}
+    <tr>
+         <td scope="row">In year 2023 you decided to ...</th>
+          {% if player.sub2_decision == "terminate" and subsession.framing != "C0" and player.failure_award_draft == 1 and player.initial_decision == "Mop Robot" %}
+
+        <td style="text-align: center;">terminate your project and invest into the alternative project. Thereby you earned {{ Constants.alternative2_boni|c }} and you successfully qualified and received {{ Constants.failure_award|c }} from the Courage Award.</td>
+        
+        {% elif player.sub2_decision == "terminate" and subsession.framing != "C0" and player.failure_award_draft == 0 and player.initial_decision == "Mop Robot" %}
+
+        <td style="text-align: center;">terminate your project and invest into the alternative project. Thereby you earned {{ Constants.alternative2_boni|c }}. The chance to qualify for the Courage Award was 50%. You did not qualify for the Courage Award.</td>
+
+        {% elif player.sub2_decision == "terminate" and subsession.framing != "C0" and player.initial_decision == "Vacuum Robot" %}
+
+        <td style="text-align: center;">terminate your project and invest into the alternative project. Thereby you earned {{ Constants.alternative2_boni_control|c }}</td>
+        
+        {% elif player.sub2_decision == "terminate" and subsession.framing == "C0" %}
+
+        <td style="text-align: center;">terminate your project and invest into the alternative project. Thereby you earned {{ Constants.alternative2_boni_control|c }}</td>
+        
+        {% else %}
+        <td style="text-align: center;">continue your project</td>
+        {% endif %}
+
+
+    </tr>
+    {% endif %}
+    {% if player.sub2_decision == "continue" %}
+    <tr>
+        <td scope="row">After year 2023 the project realized the ...</th>
+        {% if player.project_success_outcome == 1 %}
+        <td style="text-align: center;">best-case scenario (20%). Thereby you earned {{ Constants.success_boni|c }}.</td>
+        {% else %}
+        <td style="text-align: center;">worst-case scenario (80%). Thereby you earned {{ Constants.failure_boni|c }}</td>
+        {% endif %}
+    </tr>
+    {% endif %}
+
+    <tr>
+      <th colspan="2">Lottery</th>
+    </tr>
+    <tr>
+        <td scope="row">In the lottery you chose to receive the safe payment ...</th>
+        <td style="text-align: center;">from scenario {{ player.lottery_choice }} on</td>
+    </tr>
+      <tr>
+        <td scope="row">The following scenario was randomly drawn</th>
+        <td style="text-align: center;">scenario {{ player.lottery_draft }} ({{ scsrate }}% probability of winning)</td>
+      </tr>
+      {% if player.lottery_choice > player.lottery_draft and player.lottery_outcome <= scsrate %}
+      <tr>
+        <td scope="row">You participate in the lottery. You have</th>
+        <td style="text-align: center;">won the lottery</td>
+      </tr>
+      <tr>
+        <td scope="row">You receive the following compensation for the lottery task</th>
+        <td style="text-align: center;">{{ Constants.lottery_success|c }}</td>
+      </tr>
+      {% elif player.lottery_choice > player.lottery_draft and player.lottery_outcome > scsrate %}
+      <tr>
+        <td scope="row">You participate in the lottery. You have</th>
+        <td style="text-align: center;">lost the lottery</td>
+      </tr>
+      <tr>
+        <td scope="row">You receive the following compensation for the lottery task</th>
+        <td style="text-align: center;">{{ Constants.lottery_failure|c }}</td>
+      </tr>
+      {% else %}
+      </tr>
+          <td scope="row">You do not participate in the lottery. You receive the safe payment of</th>
+          <td style="text-align: center;">{{ Constants.lottery_safe|c }}</td>
+      {% endif %}
+    </tr>
+
+    <tr>
+      <th scope="row">You will receive the following total compensation</th>
+      <td style="text-align: center;"><b>{{ participant.payoff_plus_participation_fee }}</b></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br>
+<div id="next" style="text-align: right;">
+  <button class="btn btn-primary" id="nextbutton">End experiment</button>
+</div>
+
+<script>
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+#questionitem {
+  list-style:none;
+  width:100%;
+  margin:25px;
+  padding:0 0 0px;
+  display:block;
+  border-bottom:2px solid #efefef;
+}
+
+#questionitem:last-of-type {border-bottom:0;}
+
+/* grey line */
+#questionitem:before {
+  content: '';
+  position:relative;
+  top:13px;
+  left:6%;
+  display:block;
+  background-color:#efefef;
+  height:4px;
+  width:82%;
+}
+
+#questionitem li {
+  display:inline-block;
+  width:13%;
+  text-align:center;
+  vertical-align: top;
+}
+
+#questionitem li input[type=radio] {
+  display:block;
+  position:relative;
+  top:0;
+  left:50%;
+  margin-left:-6px;
+}
+
+#questionitem li label {
+  width:100%;
+  margin-top: 7px;
+  }

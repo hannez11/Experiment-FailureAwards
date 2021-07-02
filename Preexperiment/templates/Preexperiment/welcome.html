@@ -1,0 +1,58 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+    Welcome
+{% endblock %}
+
+{% block title %}
+   
+{% endblock %}
+
+{% block content %}
+
+<div class="card" style="width: 53rem;"">
+    <div class="list-group-item list-group-item-dark">
+        <font size="4"> <strong>Welcome to the experiment! <br>Thank you very much for your participation.</br></strong> </font>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">This experimental study is conducted by the Justus-Liebig-University Giessen. Your answers will be treated completely anonymously. The administrator cannot draw any conclusions about you as a person.  </li>
+      <li class="list-group-item">Please read all instructions and tasks carefully. Within the experiment <strong>several attention checks</strong> are asked. If it becomes apparent that you have worked inattentively during this HIT, you will <strong>not be compensated</strong>.</li>
+      <li class="list-group-item">The duration is approximately <strong>35 minutes</strong>. Please work on this HIT without any interruption. If you end the experiment before completion, you will not receive any compensation.</li>
+      <li class="list-group-item">This HIT is rewarded with a total compensation of approximately $4.35. If you do not pass the <strong>eligibility check</strong> on the following page, you can't proceed and thus won't be compensated. </li>
+      <li class="list-group-item">There are no risks associated with participating in this HIT. This is a business instead of a psychological experiment. Therefore, you will not be <strong>deceived at any time</strong>. 
+      <li class="list-group-item">Please also have a piece of paper and a pen handy in case you want to take notes during the experiment.</br></li>
+      <li class="list-group-item">If you have any questions about the experiment, please feel free to contact us via mTurk!</a></li>
+    </ul>
+</div>
+
+  <br>
+
+  <div class="form-check required">
+    <label class="form-check-label  field-initial_checkbox" for="check">
+      <input id="check" type="checkbox" required="" class="form-check-input">
+      <b>I understand and accept the abovementioned instructions.</b>
+    </label>
+  </div>
+
+    <div style="text-align:right">
+        <button class="btn btn-primary" type="button" id="nextbutton" onclick="fullscreenCheck()" data-toggle="tooltip" title="Please use a desktop PC or laptop in order to participate in this HIT!">Continue</button>
+    </div>
+
+
+<script>
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEmopile|Opera Mini/i.test(navigator.userAgent) ) {
+    alert("Please use a desktop PC or laptop in order to participate in this HIT!");
+} else {
+    $('#nextbutton').removeAttr("type"); // removes type attribute from next button so form can be submitted
+    $('#nextbutton').removeAttr('title'); // removes tooltip
+}
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+
+</script>
+
+
+  {% endblock %}

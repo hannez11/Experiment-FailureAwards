@@ -1,0 +1,75 @@
+{% load otree static %}
+
+{% block global_styles  %}
+<link href="{% static 'orbit/footer.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<br><br>
+<hr>
+      <div class="container" style="width: 35%;">
+          <div class="row" style="text-align: center; background-color: #fff;">
+        
+            <div class="col-sm">
+              <button type="button" id="instructionsbtn" class="btn btn-light btn-sm" data-toggle="modal" data-target="#instructions" style="border: 1px solid #a7a7a7">Instructions</button>
+            </div>
+        
+            <div class="col-sm">
+              <!-- Modal button -->
+                <button type="button" id="calcbtn" class="btn btn-light btn-sm" data-toggle="modal" data-target="#calc" style="border: 1px solid #a7a7a7">Calculator</button>
+            </div>
+        
+          </div>
+      </div>
+
+    <!-- instructions -->
+    <div class="modal fade" id="instructions" tabindex="-1" role="dialog" aria-labelledby="instructionsLabel" aria-hidden="true">
+      <div class="modal-dialog modalw">
+          <div class="modal-content">
+
+              <div class="modal-header">
+                   <h4 class="modal-title" id="instructionsLabel">Instructions</h4>
+              </div>
+
+              <div class="modal-body">
+                <!-- see _templates/global/InstructionsTemplate.html -->
+                {% include "global/InstructionsTemplateFA3.html" %}
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default mr-auto" data-dismiss="modal">Close</button>
+              </div>
+
+          </div>
+      </div>
+    </div>
+
+    <!-- calc -->
+    <div class="modal fade" id="calc" tabindex="-1" role="dialog" aria-labelledby="calcLabel" aria-hidden="true">
+      <div class="modal-dialog modalcalculator"> 
+          <div class="modal-content">
+
+              <div class="modal-header">
+                   <h4 class="modal-title" id="calcLabel">Calculator</h4>
+              </div>
+
+              <div class="modal-body">
+                <!-- see _templates/global/CalcTemplate.html -->
+                {% include "global/CalcTemplate.html" %}
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default mr-auto" data-dismiss="modal">Close</button>
+              </div>
+
+          </div>
+      </div>
+    </div>
+   
+
+{% block global_scripts  %}
+  <script src="{% static 'orbit/calc.js' %}"></script>
+{% endblock %}
+
+{% endblock %}

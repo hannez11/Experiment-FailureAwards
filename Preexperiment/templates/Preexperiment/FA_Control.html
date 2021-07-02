@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+    Reminder
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block content %}
+<br> 
+
+<div class="alert alert-info" role="alert" style="border-color: black;">
+    As you know, your variable compensation depends on the project success and thus your decisions.
+  </div>
+ 
+  <div>
+    
+
+    <div style="text-align:right">
+        <button id="nextbutton" class="btn btn-primary" data-toggle="tooltip">Continue to choose a project</button></div>
+ 
+ </div>
+ {% comment %}
+ {% include "global/FooterContentWithInitialControl.html" %}
+ {% endcomment %}
+
+{% endblock %}

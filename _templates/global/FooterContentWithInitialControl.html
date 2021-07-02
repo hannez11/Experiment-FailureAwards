@@ -1,0 +1,350 @@
+{% load otree static %}
+
+{% block scripts %}
+     
+ <script src="{% static 'back_button_v1/js/prev_next_button.js' %}"></script>
+  
+ {% endblock %}
+ 
+{% block global_styles  %}
+<link href="{% static 'orbit/footer.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block styles %}
+  
+<link href="{% static 'back_button_v1/css/custom.css' %}" rel="stylesheet">
+ 
+{% endblock %}
+
+{% block content %}
+
+<br><br>
+<hr>
+      <div class="container" style="width: 45%;">
+          <div class="row" style="text-align: center; background-color: #fff;">
+
+            <div class="col-sm">
+              <!-- Modal button projectidea -->
+                <button type="button" id="projectbtn" class="btn btn-light btn-sm" data-toggle="modal" data-target="#project" style="border: 1px solid #a7a7a7">Project ideas</button>
+            </div>
+        
+            <div class="col-sm">
+              <button type="button" id="instructionsbtn" class="btn btn-light btn-sm" data-toggle="modal" data-target="#instructions" style="border: 1px solid #a7a7a7">Instructions</button>
+            </div>
+        
+            <div class="col-sm">
+              <!-- Modal button -->
+                <button type="button" id="calcbtn" class="btn btn-light btn-sm" data-toggle="modal" data-target="#calc" style="border: 1px solid #a7a7a7">Calculator</button>
+            </div>
+        
+          </div>
+      </div>
+
+
+    <!-- projectidea -->
+    <div class="modal fade" id="project" tabindex="-1" role="dialog" aria-labelledby="projectLabel" aria-hidden="true">
+      <div class="modal-dialog modalw">
+          <div class="modal-content">
+
+              <div class="modal-header">
+                   <h4 class="modal-title" id="projectLabel"></h4>
+              </div>
+
+              <div class="modal-body">
+                
+ 
+ <!-- Tab navigation -->
+ <ul class="nav nav-tabs fixed-top navbar-light bg-light justify-content-center" id="myTab" role="tablist">
+   
+   <li class="nav-item">
+     <a class="nav-link topnav active" id="part1-tab" data-toggle="tab" href="#part1" role="tab" aria-controls="part1" onclick="timerProject1()">Project idea #1</a>
+   </li>
+   <li class="nav-item" id="navtooltip1">
+     <a class="nav-link topnav" id="part2-tab" data-toggle="tab" href="#part2" role="tab" aria-controls="part2" onclick="timerProject2()">Project idea #2</a>
+     <!-- data-toggle="tab" makes it clickable -->
+   </li>
+  
+ </ul>
+ <br>
+ <br>
+  
+ 
+ <!-- Tab content -->
+ <div class="tab-content" id="myTabContent">
+  
+ {% comment %}consider randomized display order of coffee and tee by switchting part1 and part2 around. tee is part1 if displayorder == 2{% endcomment %}
+ <!-- First Page -->
+ <div class="tab-pane toppane show active" id="part1" role="tabpanel" aria-labelledby="part1-tab">
+   
+  
+ 
+ <!-- start -->
+ <div class="container">
+  <div class="row">
+        
+        <div class="col-sm">
+            <h3>Project idea #1</h3>
+            <h3><b>Smart Vacuum Robot</b></h3>
+        </div>
+        
+        <div class="col-sm-6">
+          <img src="https://i.imgur.com/CmsmgCc.png" width="100" height="100" style="float:right">
+        </div>
+        
+    </div>
+  </div>
+ 
+
+  <hr>
+ 
+<div class="card">
+  
+  <h5 class="card-header">Project overview</h5>
+  <div class="card-body">
+    <div class="col-sm-18">
+      <img src="https://i.imgur.com/8Q4OVKx.png" width="230" height="65" style="float:right">
+    </div>
+    <!-- ANPASSEN AB HIER -->
+
+  <h4>Description</h4>
+  <br>
+  <hr>
+  <p>Smart Vacuum Robot is an artificially intelligent vacuum robot.
+    
+   It has a noise cancelling function which makes the robot so quiet that even babies can keep sleeping while the house gets vacuumed.</p>
+   
+   <p>Its new feature is a <strong>mapping function</strong> through which the robot can be sent to any place via an app. </p>
+ 
+   <p><i>CleverClean</i> has successfully launched a similar vacuum robot last year, but without the <strong>mapping and noise cancelling functions</strong>. Based on the profound experience with the previous vacuum product and the available market surveys, the returns for Smart Vacuum Robot will be <strong>modest but very certain</strong>.</p>
+
+ 
+   <p>The initial investment to start the Smart Vacuum project amounts to <strong>3m Lira</strong>.         </p>
+    
+  
+  <h4>Financials</h4><hr>
+  <p>The current balance of the project account is 5m Lira.</p><p>The following <strong>predicted values</strong> were calculated based on currently known information:</p>
+  
+  
+  <table class="table table-striped">
+    <thead style="text-align: center;">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Best-Case Scenario</th>
+        <th scope="col">Worst-Case Scenario</th>
+        
+      </tr>
+    </thead>
+    <tr>
+      <th scope="row" style="width: 50%;">Probability</th>
+      <td style="text-align: center; font-weight: 600">90%</td>
+     <td style="text-align: center; font-weight: 600">10%</td>
+    </tr>
+    <tr>
+      <th scope="row" style="width: 50%;">Required initial investment</th>
+      <td style="text-align: center;">3m Lira</td>
+      <td style="text-align: center; width: 35%;">3m Lira</td>
+    </tr>
+    <tr>
+      <th scope="row">Expected project cash inflows</th>
+      <td style="text-align: center; width: 35%;">7m Lira</td>
+      <td style="text-align: center; width: 35%;">2m Lira</td>
+    </tr>
+    
+  </table>
+</div>
+ 
+</div>
+
+
+
+<!-- end -->
+  
+ </div>
+ 
+ 
+ 
+ <!-- Second Page -->
+ <div class="tab-pane toppane" id="part2" role="tabpanel" aria-labelledby="part2-tab">
+  
+ <!-- start -->
+
+
+ <div class="container">
+  <div class="row">
+        
+        <div class="col-sm">
+            <h3>Project idea #2</h3>
+            <h3><b>Smart Mop Robot</b></h3>
+        </div>
+        
+        <div class="col-sm-6">
+          <img src="https://i.imgur.com/CmsmgCc.png" width="100" height="100" style="float:right">
+        </div>
+        
+    </div>
+  </div>
+ 
+<hr>
+ 
+
+          <div class="card">
+            <h5 class="card-header">Project overview</h5>
+            <div class="card-body">
+              <div class="col-sm-18">
+                <img src="https://i.imgur.com/XswgAUQ.png" width="220" height="58" style="float:right">
+              </div>
+
+
+            <h4>Description</h4>
+            <br>
+            <hr>
+             <p>Smart Mop Robot is an artificially intelligent mop and vacuum robot. With its additional mop function not only the dust gets vacuumed, but also persistent stains are removed at the same time.</p>
+           
+             <p>Smart Mop Robot also has an innovative <strong>mapping function</strong> through which the robot can be sent to any place via an app. </p>
+             
+             <p>Due to operating in an unknown market, it is possible that there will be <strong>no market demand at all</strong> for Smart Mop Robot. However, if the company succeeds in convincing customers of this innovation, it could generate <strong>high sales and a large market share</strong> as a first mover.</p>
+            
+
+             
+  
+             <p>The initial investment to start the Smart Mop project amounts to <strong>3m Lira</strong>.         </p>
+
+
+            <h4>Financials</h4><hr>
+            <p>The current balance of the project account is 5m Lira.</p><p>The following <strong>predicted values</strong> were calculated based on currently known information:</p>
+            
+        
+ 
+            <table class="table table-striped">
+              <thead style="text-align: center;">
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Best-Case Scenario</th>
+                  <th scope="col">Worst-Case Scenario</th>
+                  
+                </tr>
+              </thead>
+              <tr>
+                <th scope="row" style="width: 50%;">Probability</th>
+                <td style="text-align: center; font-weight: 600">50%</td>
+                   <td style="text-align: center; font-weight: 600">50%</td>
+              </tr>
+              <tr>
+                <th scope="row" style="width: 50%;">Required initial investment</th>
+                <td style="text-align: center;">3m Lira</td>
+                <td style="text-align: center; width: 35%;">3m Lira</td>
+              </tr>
+              <tr>
+                <th scope="row">Expected project cash inflows</th>
+                <td style="text-align: center; width: 35%;">14m Lira</td>
+                <td style="text-align: center; width: 35%;">0m Lira</td>
+              </tr>
+              
+            </table>
+ 
+
+        </div>
+      
+          </div>
+   </div>
+ </div>
+       
+
+
+
+
+  <!-- end -->
+
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default mr-auto" data-dismiss="modal">Close</button>
+              </div>
+
+          </div>
+      </div>
+</div>
+
+    <!-- instructions -->
+    <div class="modal fade" id="instructions" tabindex="-1" role="dialog" aria-labelledby="instructionsLabel" aria-hidden="true">
+      <div class="modal-dialog modalw">
+          <div class="modal-content">
+
+              <div class="modal-header">
+                   <h4 class="modal-title" id="instructionsLabel">Instructions</h4>
+              </div>
+
+              <div class="modal-body">
+                <!-- see _templates/global/Instructions.html -->
+                {% include "global/InstructionsTemplateControl.html" %}
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default mr-auto" data-dismiss="modal">Close</button>
+              </div>
+
+          </div>
+      </div>
+    </div>
+
+    <!-- calc -->
+    <div class="modal fade" id="calc" tabindex="-1" role="dialog" aria-labelledby="calcLabel" aria-hidden="true">
+      <div class="modal-dialog modalcalculator">
+          <div class="modal-content">
+
+              <div class="modal-header">
+                   <h4 class="modal-title" id="calcLabel">Calculator</h4>
+              </div>
+
+              <div class="modal-body">
+                <div class="calculator" style="text-align: center;">
+                  <div class="inputcalc" id="inputcalc"></div>
+                  <div class="buttons">
+                    <div class="operators">
+                      <div>+</div>
+                      <div>-</div>
+                      <div>&times;</div>
+                      <div>&divide;</div>
+                    </div>
+                    <div class="leftPanel">
+                      <div class="numbers">
+                        <div>7</div>
+                        <div>8</div>
+                        <div>9</div>
+                      </div>
+                      <div class="numbers">
+                        <div>4</div>
+                        <div>5</div>
+                        <div>6</div>
+                      </div>
+                      <div class="numbers">
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                      </div>
+                      <div class="numbers">
+                        <div>0</div>
+                        <div>.</div>
+                        <div id="clear">C</div>
+                      </div>
+                    </div>
+                    <div class="equal" id="result">=</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default mr-auto" data-dismiss="modal">Close</button>
+              </div>
+
+          </div>
+      </div>
+    </div>
+
+{% block global_scripts  %}
+  <script src="{% static 'orbit/calc.js' %}"></script>
+{% endblock %}
+
+{% endblock %}
+
+

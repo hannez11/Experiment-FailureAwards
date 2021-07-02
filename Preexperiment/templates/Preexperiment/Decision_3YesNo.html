@@ -1,0 +1,115 @@
+<style>
+  
+    /* space between buttons */
+    .btn-space {
+        margin-right: 50px;
+    }
+    
+    .btn:focus, .btn:active {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+    </style>
+  
+  
+  
+  {% extends "global/Page.html" %}
+  {% load otree static %}
+  
+  {% block head_title %}
+  Decision_3
+  {% endblock %}
+  
+  {% block title %}
+  
+  {% endblock %}
+  
+  {% block content %}
+  
+  <div class="card">
+    <div class="card-header">
+      <p><span style="font-weight: 400">The management board received your recommendation to continue the project with {{ player.sub_decision2 }}% and to terminate it with  {{ sub_decision2adjusted }}%. They now ask you to make a <b>final decision</b> if your project should be <strong>continued or terminated</strong></span>.</p>
+      <p><span style="font-weight: 400">If you decide to continue your project, the project's outcome (worst or best case) will be drawn by lot.</span></p>
+      <br>
+      <p>To make a decision, click on the corresponding box:</p>
+    </div>
+    <div class="card-body">
+        <br>
+        <div style="text-align:center">
+          <button type="button" class="btn btn-secondary btn-space" onclick="save_coffee()" id="coffee">Continue my project Smart {{ player.initial_decision }}</button>
+          <button type="button" class="btn btn-secondary btn-space" onclick="save_tee()" id="tee">Terminate my project Smart {{ player.initial_decision }}</button>
+        </div>
+        <br>
+        <hr>
+  
+        <div class="alert alert-primary" role="alert" id="selection" style="text-align: center;">
+            The management board will ... the project Smart {{ player.initial_decision }}!
+        </div>
+        <br>
+        <div class="form-check required">
+          <label class="form-check-label  field-initial_checkbox" for="check">
+            <input id="check" type="checkbox" required="" class="form-check-input">
+            I made my decision
+          </label>
+        </div>
+    </div>
+  </div>
+  
+  <br>
+  
+  
+  <div style="text-align: right;">
+  <button type="button" class="nexttab btn-primary btn next" id="nextbutton" data-toggle="tooltip" title="Please indicate if you want to continue or terminate your project">Submit decision</button>
+  </div>
+  
+  
+  
+  
+  <input type="hidden" name="timer_sub2choice" id="timer_sub2choice" value=0>
+  <input type="hidden" name="sub2_choices" id="sub2_choices"> 
+  
+  <script>
+  
+      let decision_array = []
+      function save_tee() {
+          //$('#nextbutton').prop('disabled',false); //decision has to be made before nextbutton is clickable
+          $('#nextbutton').removeAttr("type"); // removes type attribute from next button so form can be submitted
+          $('#nextbutton').removeAttr('data-original-title'); // removes tooltip
+          $('#tee').css({"background-color": "#007bff", "border-color": "#007bff"}); //highlight
+          $('#coffee').css({"background-color": "#6c757d", "border-color": "#6c757d"}); //unhighlight
+          $('#selection').html("The management board will <b>terminate</b> the project Smart {{ player.initial_decision }}!");
+          decision_array.push("terminate") //push click to array
+          $("#sub2_choices").val(decision_array); //save array
+      }
+      
+      function save_coffee() {
+          $('#nextbutton').removeAttr("type"); // removes type attribute from next button so form can be submitted
+          $('#nextbutton').removeAttr('data-original-title'); // removes tooltip
+          $('#tee').css({"background-color": "#6c757d", "border-color": "#6c757d"});
+          $('#coffee').css({"background-color": "#007bff", "border-color": "#007bff"});
+          $('#selection').html("The management board will <b>continue</b> the project Smart {{ player.initial_decision }}!");
+          decision_array.push("continue")
+          $("#sub2_choices").val(decision_array);
+      }
+      
+      var sec = 0; // global variable
+    
+      // increasing timer
+      function pad ( val ) { return val > 9 ? val : "0" + val; }
+      setInterval( function(){
+          $("#seconds").html(pad(++sec));
+          $("#timer_sub2choice").val(sec); // store seconds spent on page in hidden field
+      }, 1000);
+      
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+      });
+    
+    </script>
+    
+  
+  
+  
+  
+  
+  {% endblock %}

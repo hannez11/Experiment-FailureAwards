@@ -1,0 +1,81 @@
+<style>
+    .otree-timer {
+        display: none;
+    }
+
+    /* needed for animated progess bar */
+    .progress.active .progress-bar {
+    -webkit-transition: none !important;
+    transition: none !important;
+    }
+</style>
+
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+Experiment Orbit
+{% endblock %}
+
+{% block title %}
+    
+{% endblock %}
+
+{% block content %}
+
+<div id="progessbar">
+
+    <div class="alert alert-primary" role="alert" style="text-align: center;">
+        Please hold on a moment.<br>
+        The development for the next 12 months of your project Smart {{ player.initial_decision }} is loaded.
+    </div>
+
+    <div class="col-xs-12 col-sm-12 progress-container">
+        <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-success" style="width:0%"></div>
+        </div>
+    </div>
+
+</div>
+
+<div id="subinfo" style="display:none;">
+
+    <div class="alert alert-primary" role="alert" style="text-align: center;">
+        Two years have passed since the start of your project Smart {{ player.initial_decision }}.
+    </div>
+    
+    <div class="card bg-light m-3">
+        <div class="card-body">
+            <p>You will now receive another report with updated information about your Smart {{ player.initial_decision }} project.</p> 
+    
+            <p>After reading the report, you will have to provide a final decision regarding the further development of your project.</p>
+            <p>This is the last decision you will have to make for your Smart {{ player.initial_decision }} project.</p>
+        </div>
+    </div>
+    
+    <div style="text-align: right">
+        <button id="nextbutton" class="btn btn-primary">Continue to the updated project report</button>
+    </div>
+
+</div>
+
+<!-- needed for animated progress bar, 6000 equals loading time -->
+<script>
+    $(".progress-bar").animate({
+        width: "100%"
+    }, 5500);
+    
+    var sec = 0; // global variable
+    
+    // increasing timer
+    function pad ( val ) { return val > 9 ? val : "0" + val; }
+    setInterval( function(){
+        pad(++sec); // increase sec variable
+        if (sec > 5.5) {
+            $("#progessbar").hide(); // hide progessbar
+            $("#subinfo").show(); // show payout
+        }
+    }, 1000);
+</script>
+
+{% endblock %}

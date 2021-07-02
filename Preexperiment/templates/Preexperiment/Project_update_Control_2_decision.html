@@ -1,0 +1,523 @@
+<style>
+  /* adjusts height of three boxes at the top */
+  .card-deck .card-body {
+      padding: 0.6rem;
+      vertical-align: middle;
+  }
+  
+  /* slider bar */
+  #slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #007bff;
+    outline: none;
+    opacity: 0.8;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-top: 1%;
+  }
+  
+  #slider:hover {
+    opacity: 1;
+  }
+  
+  /* chrome */
+  .sliderhiddenchrome::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 20px;
+    border-radius: 25%;
+    background: #4CAF50;
+    cursor: pointer;
+    opacity: 0;
+  }
+  
+  .slidershownchrome::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 25px;
+    border-radius: 25%;
+    border: 2px solid #000000;
+    background: #ffffff;
+    cursor: pointer;
+    opacity: 1;
+  }
+  
+  /* firefox */
+  .sliderhidden::-moz-range-thumb {
+    width: 10px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+    opacity: 0;
+  }
+  
+  .slidershown::-moz-range-thumb {
+    width: 10px;
+    height: 20px;
+    border-radius: 25%;
+    border: 2px solid #000000;
+    background: #ffffff;
+    cursor: pointer;
+    opacity: 1;
+  }
+  
+  /* .modal-lg {
+      max-width: 50% !important;
+  } */
+  </style>
+  
+  {% extends "global/Page.html" %}
+  {% load otree static %}
+  
+  {% block head_title %}
+  Project_update_2_F
+  {% endblock %}
+  
+  {% block title %}
+     
+  {% endblock %}
+  
+  {% block scripts %}
+  
+  <script src="{% static 'back_button_v1/js/prev_next_button.js' %}"></script>
+  
+  {% endblock %}
+  
+  
+  {% block styles %}
+  
+  <link href="{% static 'back_button_v1/css/custom.css' %}" rel="stylesheet">
+  
+  {% endblock %}
+  
+  
+  {% block content %}
+  
+  <!-- Tab navigation -->
+  <!-- second tab is active tab on this page -->
+  <ul class="nav nav-tabs   fixed-top navbar-light bg-light justify-content-center" id="myTab" role="tablist">
+    
+    <li class="nav-item">
+      <a class="nav-link topnav active" id="part1-tab" data-toggle="tab" href="#part1" role="tab" aria-controls="part1" onclick="topFunction(); timerReport()">Update 2023</a>
+    </li>
+    <li class="nav-item" id="navtooltip1" data-toggle="tooltip" title="Please first read the 'Updated Analysis' (on the left hand side)">
+      <a class="nav-link topnav" id="part2-tab" href="#part2" role="tab" aria-controls="part2" onclick="topFunction(); timerRecommendation()">Recommendation</a> 
+    </li>
+  
+  </ul>
+  <br>
+  <br>
+  
+  
+  <!-- Tab content -->
+  <div class="tab-content" id="myTabContent">
+  
+  <!-- First Page -->
+  <div class="tab-pane toppane show active" id="part1" role="tabpanel" aria-labelledby="part1-tab">
+  
+  
+  
+  <!-- start -->
+  <div class="container">
+  
+    <div class="container">
+      <div class="row">
+  
+        <div class="col-sm">
+          <h3>Project Smart {{ player.initial_decision }}</h3>
+          <h4>Update 2023</h4>
+        </div>
+  
+        <div class="col-sm">
+          <img src="https://i.imgur.com/CmsmgCc.png" width="100" height="100" style="float:right">
+        </div>
+  
+      </div>
+    </div>
+  
+    <hr>
+    <div class="card-deck" style="text-align: center;">
+
+      <div class="card">
+        <div class="card-header">
+          Project launch date
+        </div>
+        <div class="card-body">
+          <p class="card-text" style="text-align: center; padding: 10px 0">2021</p>
+        </div>
+      </div>
+
+    
+
+      <div class="card">
+        <div class="card-header">
+          Project account balance
+        </div>
+        <div class="card-body">
+          <p class="card-text" style="text-align: center; text-underline-offset: 6px; font-weight: 510">
+            <span style="text-decoration: underline; text-decoration-color: #d3d3d3;">Project start (2021): 5m Lira</span> <br>
+            Currently (2023): 1m Lira
+          </p>
+        </div>
+      </div>
+
+  </div>
+<hr>
+
+    <div class="row">
+      <div class="col-md-3">
+        <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link" aria-selected="false"><b>Smart {{ player.initial_decision }}</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" id="Zwischenbericht-tab" data-toggle="tab" href="#Zwischenbericht" role="tab" aria-controls="Zwischenbericht" aria-selected="true">Updated Project Report</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" id="Szenarioanalyse-tab" data-toggle="tab" href="#Szenarioanalyse" role="tab" aria-controls="Szenarioanalyse" aria-selected="false" onclick="destroyTooltip(); timerReport()">Updated Analysis</a>
+          </li>
+          
+        </ul>
+    </div>
+  
+    <div class="col-md-9">
+        <div class="tab-content" id="myTabContent">
+  
+          <div class="tab-pane fade show active" id="Zwischenbericht" role="tabpanel" aria-labelledby="Zwischenbericht-tab">
+            <div class="card">
+              <h5 class="card-header">Updated Project Report</h5>
+              <div class="card-body">
+                <div class="alert alert-info" role="alert" style="border-color: black;">
+                  As you know, your variable compensation depends on the project success and thus your decisions.
+                </div>
+                <p>The additional investment of 1m Lira has been spent and the mapping software has been successfully developed.</p><hr>
+                <p>However, it turned out that new regulations for app controlled devices require an integrated “safety function” which prevents unauthorized users to hack into the system. In order to comply with the regulations and complete the project, another 1m Lira need to be invested (<i>additional investment</i>).</p><hr>
+                <p>Nevertheless, customers seem to like the idea of having a Smart {{ player.initial_decision }} at home, as you received several inquiries after presenting it at an innovation exhibition.</p><hr>
+                <p>Another concern is that the mapping software cannot be distributed over the App Store due to unforeseen privacy complications. Consequently, the predicted customer demand is likely to be reduced.</p>
+                  
+              </div>
+          </div>
+        </div>
+  
+       
+  
+          <div class="tab-pane fade" id="Szenarioanalyse" role="tabpanel" aria-labelledby="Szenarioanalyse-tab">
+            <div class="card">
+              <h5 class="card-header">Updated Scenario Analysis</h5>
+              
+              <div class="card-body">
+                
+                <p>There is a possibility to terminate your project.</p>
+                <p>If you decide to stop your project, you can invest the remaining 1m Lira of the project account - which otherwise must be paid for installing the safety function if the project continues - in an alternative project.</p>
+                <div><p>Based on the changed circumstances, the predicted values were updated as follows: 
+                </p></div>
+
+                <table class="table table-striped">
+                  <thead style="text-align: center;">
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col"style="text-align: center; width:45%">Smart {{ player.initial_decision }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td scope="row"><strong>Total investments already spent</strong></td>
+                      <td style="text-align: center;">4m Lira</td> 
+                    </tr>
+                  </tbody>
+                </table>
+  
+                <table class="table table-striped">
+                  <thead style="text-align: center;">
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Best-Case Scenario</th>
+                      <th scope="col">Worst-Case Scenario</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td scope="row" style="width: 55%;"><strong>Probability</strong></td>
+                      <td style="text-align: center; font-weight: 600">20%</td>
+                      <td style="text-align: center; font-weight: 600">80%</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>Additional investment</strong></td>
+                      <td style="text-align: center;">1m Lira</td>
+                      <td style="text-align: center;">1m Lira</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>Expected project cash inflows</strong></td>
+                      <td style="text-align: center; vertical-align:middle">7m Lira</td>
+                      <td style="text-align: center; vertical-align:middle">3m Lira</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>Expected balance on the project account</strong></td>
+                      <td style="text-align: center;font-weight: 600; vertical-align:middle">7m Lira</td>
+                      <td style="text-align: center;font-weight: 600; vertical-align:middle">3m Lira</td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <br>
+
+
+            <div class="card">
+              <h5 class="card-header">Alternative Project</h5>
+              <div class="card-body">
+
+                <p>The predicted values of the alternative project are the following:</p>
+
+                <table class="table table-striped">
+                  <thead style="text-align: center;">
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Alternative project</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td scope="row" style="width: 60%;"><strong>Required investment</strong></td>
+                     <td style="text-align: center;">1m Lira</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>Expected project cash inflows</strong></td>
+                      <td style="text-align: center;">4.9m Lira</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>Expected balance on the project account</strong></td>
+                      <td style="text-align: center;font-weight: 600; vertical-align:middle">4.9m Lira</td>
+                    </tr>
+                  
+                </table>
+                <hr>
+               
+              </div>
+            </div>
+            <button type="button" id="nextbutton1" class="nexttab btn-primary btn next" onclick="topFunction(); timerRecommendation()">Continue to give a recommendation</button>
+          </div>
+          <!-- Kann eiegentlich gelöscht werden, aber dann passt es nicht mehr... -->
+          <div class="tab-pane fade fade" id="Alternative" role="tabpanel" aria-labelledby="Alternative-tab">
+            <div class="card">
+              <h5 class="card-header">Alternatives Investment</h5>
+                <div class="card-body">
+                <p>Obwohl Sie bereits 4 Mio. Lira in Ihr Project Smart {{ player.initial_decision }} investiert haben, besteht die Möglichkeit das Project Smart {{ player.initial_decision }} abzubrechen.</p>
+                <p>Falls Sie Ihr Project abbrechen, könnten die verbleibenden 3,5 Mio. Lira des Projectkontos - welche bei Projectfortsetzung für die externe Softwareprogrammierung gezahlt werden müssen - in ein alternatives Project investiert werden.</p>
+                <table class="table table-striped">
+                  <thead style="text-align: center;">
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Alternatives Investment</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row" style="width: 60%;">Benötigte Anfangsinvestition</th>
+                      <td style="text-align: center;">3,5 Mio. Lira</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Erwartete diskontierte Einzahlungsüberschüsse aus den Rückflüssen der Investition</th>
+                      <td style="text-align: center;">7,0 Mio. Lira</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <br>
+                <table class="table table-striped">
+                  <tr>
+                    <td style="font-weight: bold; width: 60%">Erwartete Differenz zum<br>ursprünglichen Projectguthaben</td>
+                    <td style="text-align: center;font-weight: 600; vertical-align:middle">-0,5 Mio. Lira</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+  
+      </div>
+    </div>
+  
+    </div>
+  </div>
+  
+  <!-- end -->
+  
+  
+  </div>
+  
+  
+  <!-- Third Page -->
+    <div class="tab-pane toppane show" id="part2" role="tabpanel" aria-labelledby="part2-tab">
+      
+      <div class="container">
+        <div class="row">
+      
+          <div class="col-sm">
+            <h3>Project Smart {{ player.initial_decision }}</h3>
+            <h4>Update 2023</h4>
+          </div>
+      
+          <div class="col-sm">
+            <img src="https://i.imgur.com/CmsmgCc.png" width="100" height="100" style="float:right">
+          </div>
+      
+        </div>
+      </div>
+      <hr>
+      
+      <div class="card">
+        <div class="card-header">
+          <b>Final recommendation to the management board</b>
+        </div>
+        <div class="card-body">
+          <div style="text-align: left;">
+            <p>The management board would now like to know how strongly you recommend to continue your project Smart {{ player.initial_decision }}.</p>
+            <br>
+            <p>To make a recommendation, <strong>click on the bar and move the slider to the desired position</strong>. Below the slider you can see the implication of your chosen values.</p>
+          </div>
+          
+          <div class="alert" role="alert" style="background-color:#f7f7f7; border: 1px solid rgb(90, 90, 90);">
+      
+            <p id="inputdisplay" style="text-align: center">I recommend the management board with ... to continue the project Smart {{ player.initial_decision }}!</p>
+            <hr>
+            <div class="slidecontainer" style="text-align: center">
+              <div class="row">
+                <div class="col" style="padding: 0;">
+                  <p style="text-align: right">0%</p>
+                </div>
+                <div class="col-9">
+                  <input type="range" min="0" max="100" value="50" id="slider" name="sub_decision2" class="sliderhidden sliderhiddenchrome">
+                </div>
+                <div class="col" style="padding: 0;">
+                  <p style="text-align: left">100%</p>
+                </div>
+              </div>
+            </div>
+      
+            <div class="sliderlabels" style="text-align: center; font-style: italic">
+              <div class="row">
+                <div class="col-sm">
+                  <p style="text-align: left; font-size: 0.93rem;">Terminate my project Smart {{ player.initial_decision }} <br> and invest in the alternative poject</p>
+                </div>
+                <div class="col-sm">
+                  <p style="text-align: right; font-size: 0.93rem;">Continue my project Smart {{ player.initial_decision }} <br> and don't invest in the alternative project</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
+          <hr>
+          <div class="alert alert-primary" role="alert" id="selection" style="text-align: center;">
+            I recommend to continue the project Smart {{ player.initial_decision }} with a likelihood of <i>..</i> and terminate the project with a likelihood of <i>..</i>. 
+          </div>
+  
+        </div>
+      </div>
+      
+  
+  <button onclick="topFunction(); timerReport()" type="button" class="prevtab btn-light btn back" style="background-color: #f8f9fa; border-color: #8b8b8b">Back to the update</button>
+  <button type="button" class="nexttab btn-primary btn next" id="nextbutton" data-toggle="tooltip" title="Please choose a value by clicking on the slider">Submit recommendation</button>
+  
+    </div>
+  
+  
+  </div>
+
+  <br><br>
+  <!-- footerbar with instructions and calculator modals -->
+  {% include "global/FooterContentControl.html" %}
+  
+  </body>
+  
+  <!-- hidden field to store all slider inputs -->
+  <input type="hidden" name="slider_inputs2" id="slider_inputs2">
+  
+  <!-- hidden field to store time spent on page in seconds -->
+  <input type="hidden" name="timer_subrecommendation2" id="timer_subrecommendation2" value=0>
+  
+  <script>
+  
+    // subdecision scripts
+    // jquery to show initially hidden slider knob/thumb after slider is clicked once
+    $("#slider").on('touchstart click', function() { //click = mouseclick ; touchstart for mobile devices
+      $(this).removeClass('sliderhidden').removeClass('sliderhiddenchrome').addClass('slidershown').addClass('slidershownchrome');
+    })
+  
+    $("#slider").on("input", function(){ // function is executed when slider is moved
+      let val = $(this).val(); // refers to slider
+      $("#inputdisplay").html(`I recommend the management board with <b>${val}</b>% to continue the project Smart {{ player.initial_decision }}!`); // displays current slider value
+      $('#selection').html(`I recommend to continue the project Smart {{ player.initial_decision }} with a likelihood of <i>${val}%</i> and terminate the project with a likelihood of <i>${100-val}%</i>.`);
+    })
+
+    let slider_inputs2 = [] // records all inputs after mouse-release
+  
+    $("#slider").mouseup( function(){ // function is executed when slider is moved and leftmousebtn is released
+      let val = $(this).val(); // refers to slider
+      slider_inputs2.push(val); // pushes current selection to array
+      $("#slider_inputs2").val(slider_inputs2); // stores array in hidden field
+    })
+  
+    $("#slider").on("touchend", function(){ // function is executed when finger is removed from touchscreen
+      let val = $(this).val(); // refers to slider
+      slider_inputs2.push(val); // pushes current selection to array
+      $("#slider_inputs2").val(slider_inputs2); // stores array in hidden field
+    })
+  
+    var sec = 0; // global variable
+    let timer = [] // first value equals time spent on recommendation tab before report tab is opened
+  
+    function timerReport() {
+      timer.push("Financials tab clicked at " + sec);
+    }
+    
+    function timerRecommendation() {
+      timer.push("Recommendation tab clicked at " + sec);
+    }
+  
+    function destroyTooltip() {
+    $('#navtooltip1').tooltip('dispose'); //destroys the tooltip on the 2nd item in the upper navbar
+    $("#part2-tab").attr('data-toggle','tab'); // makes top navbar second item clickable
+  }
+  
+    // increasing timer
+    function pad ( val ) { return val > 9 ? val : "0" + val; }
+    setInterval( function(){
+        $("#seconds").html(pad(++sec)); // executes function. however no field with id #seconds on this page
+        // $("#timer_subrecommendation").val(sec); // store seconds spent on page in hidden field
+        if ($("#slider").hasClass("slidershown") || $("#slider").hasClass("slidershownchrome")) { // participant only can advance if slider input was made
+          $('#nextbutton').removeAttr("type"); // removes type attribute from next button so form can be submitted
+          $('#nextbutton').removeAttr('data-original-title'); // removes tooltip
+        }
+    }, 1000);
+  
+    $('#nextbutton').click(function() { // execute function if next is clicked
+      if ($('#nextbutton').attr("type") !== "button") { // function is executed if next can be clicked
+        timer.push("total " + sec); // push total secs to array
+        $("#timer_subrecommendation2").val(timer); // store array in hidden field
+      }
+    });
+  
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();   
+    });
+  
+    $(document).ready(function(){
+      $(window).scrollTop(0);
+    });
+  
+  </script>
+  
+  {% endblock %}
+  
+  
+  
+  

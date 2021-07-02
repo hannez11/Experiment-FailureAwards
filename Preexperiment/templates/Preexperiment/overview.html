@@ -1,0 +1,58 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+  Experiment Overview
+{% endblock %}
+
+{% block title %}
+  Experiment Overview 
+{% endblock %}
+
+{% block content %}
+
+<p>The experiment consists of <strong>three parts.</strong> Please read the following procedure carefully. 
+</p>
+
+<br>
+
+<ul class="list-group">
+    <li class="list-group-item list-group-item-secondary" align="justify"><strong>Part 1: Lottery-Task</strong><br>
+        First, you will receive a lottery task. Its payout is one part of your compensation. The lottery is independent from this HIT’s main-task. You will find detailed instructions on the next page.
+        </li>
+</ul>
+
+<br>
+  
+<ul class="list-group">
+    <li class="list-group-item list-group-item-secondary" align="justify"><strong>Part 2: Main-Task</strong><br>
+        In the main task you are taking on the role of a project manager at the company <i>CleverClean</i>. During the experiment you will receive several sets of information and will be asked to make various decisions.
+
+      </li>
+</ul>
+
+<br>
+
+<ul class="list-group">
+    <li class="list-group-item list-group-item-secondary" align="justify"><strong>Part 3: Questionnaire</strong><br>
+        Lastly, you will be asked to answer some questions about your decisions and your person at the end of the experiment.
+    </li>
+</ul>
+
+<br>
+
+
+<!-- <div class="form-check required">
+  <label class="form-check-label  field-initial_checkbox" for="check">
+    <input id="check" type="checkbox" required="" class="form-check-input">
+    <b>I have read the overview.</b>
+  </label>
+</div> -->
+
+<div style="text-align:right">
+  <button class="btn btn-primary" id="nextbutton">Continue</button>
+</div>
+
+
+
+{% endblock %}

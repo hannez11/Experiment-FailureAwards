@@ -1,0 +1,43 @@
+{% load otree static %}
+
+{% block content %}
+
+<!-- see _templates/global/Page.html for accordion css and calculator css/js. they are available for every page in this project -->
+<!-- see static/orbit/footer.css and calc.js for accordion css and calculator css/js. they are available for every page in this project -->
+
+<div class="calculator" style="text-align: center;">
+  <div class="inputcalc" id="inputcalc"></div>
+  <div class="buttons">
+    <div class="operators">
+      <div>+</div>
+      <div>-</div>
+      <div>&times;</div>
+      <div>&divide;</div>
+    </div>
+    <div class="leftPanel">
+      <div class="numbers">
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+      </div>
+      <div class="numbers">
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+      </div>
+      <div class="numbers">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+      </div>
+      <div class="numbers">
+        <div>0</div>
+        <div>.</div>
+        <div id="clear">C</div>
+      </div>
+    </div>
+    <div class="equal" id="result">=</div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+    Lottery task
+{% endblock %}
+
+{% block title %}
+   Lottery task
+{% endblock %}
+
+
+{% block content %}
+<br>
+
+<ul class="list-group" style="width: 53rem;">
+    <li class="list-group-item list-group-item-action list-group-item-secondary"><font size="4"> <strong>Participate in a lottery or receive a safe payment – it is your decision!</strong> </font>
+    </li>
+    <li class="list-group-item">On the next page 15 scenarios are presented. Each scenario shows a safe payment and a lottery with different probabilities of winning. <strong>Your task is to select the scenario in which you switch from participating in the lottery to the safe payment. </strong></li>
+    <li class="list-group-item">At the end of the experiment, 1 of the 15 scenarios will be chosen randomly by the computer. The selected scenario represents the lottery component of your compensation. <br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;<strong>If you chose the safe payment</strong> in this selected scenario, you would receive $0.75 for the lottery <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; task. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please note the amount of the safe payment is the same for all scenarios. <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;<strong>If you chose to participate in the lottery </strong>  in this selected scenario, it would be drawn whether you <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; have won ($1.50) or lost ($0) the lottery. Please note that the probabilities of winning or losing differ <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; across the scenarios. <br>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+    <li class="list-group-item">After you select a scenario, an explanation for each lottery outcome is displayed. Please read it carefully and confirm your choice as soon as you are sure about your decision.</li>
+  </ul>
+
+<br>
+<br>
+
+<div style="text-align:right">
+    {% next_button %}
+</div>
+
+<!-- <input type="hidden" name="timer_lottery1" id="timer_lottery1" value=0> -->
+
+<!-- <script>
+
+    var sec = 0; // global variable
+    
+    // increasing timer
+    function pad ( val ) { return val > 9 ? val : "0" + val; }
+    setInterval( function(){
+        $("#seconds").html(pad(++sec));
+        $("#timer_lottery1").val(sec); // store seconds spent on page in hidden field
+    }, 1000);
+
+</script> -->
+
+  {% endblock %}

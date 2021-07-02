@@ -1,0 +1,113 @@
+<style>
+  .email {
+        font-family:Georgia, serif; 
+        border: 1px solid rgb(138, 138, 138); 
+        border-radius: 5px;
+        padding-left: 12px;
+        padding-top: 10px;
+  }
+
+  .boldspan {
+    font-weight: 550;
+  }
+</style>
+{% load otree static %}
+
+{% block content %}
+
+<!-- see _templates/global/Page.html for accordion css and calculator css/js. they are available for every page in this project -->
+<!-- see static/orbit/footer.css and calc.js for accordion css and calculator css/js. they are available for every page in this project -->
+<!-- accordings need a different id than in the original instructions html, otherwise wrong accordions will open -->
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="accordion" id="docaccordion">
+
+          <div class="card">
+              <div class="card-header accord">
+                <h6>
+                  <a class="collapsed" href="#aufgabe2" data-toggle="collapse" onclick="AufgabeClick()">
+                    Information about your task
+                  </a>
+                </h6>
+              </div>
+              <div class="collapse" id="aufgabe2" data-parent="#docaccordion1">
+                <div class="card-body">
+                  
+                  <div>
+                    <p>In this experiment, you are taking on the role of a leading project manager at the company <i><i>CleverClean</i>.</i></p>
+                    <p>In order to generate further growth within the next years, the management board intends to launch a new household utensil.<strong> Since you are the manager of the projects department, the board instructs you to choose and manage one out of two potential innovation projects.</strong> At <i><i>CleverClean</i></i> projects are selected based on their expected return. Hence, projects with higher expected returns are preferred.</p><hr>
+                    Further, as part of <i><i>CleverClean</i>'s</i> corporate strategy, the board especially puts emphasis on the following aspects:</p>
+                    <ul>
+                      <li>Achievement of high customer and employee satisfaction at any time</li>	
+                      <li>Encouragement of employees to be innovative and to take risks</li>	
+                      <li>Reduction of resource wastage in failing projects</li> 	
+                    </ul>
+                    <p>As financing capacities are limited at <i>CleverClean</i>, a project is considered as failing if <strong>investing any additional dollar in this project creates lower expected returns than investing in alternative projects</strong>.</p><hr>
+                    <p>You will receive information about the two project proposals after completing the quiz. Based on this information, you will have to decide which of the two projects <i><i>CleverClean</i></i> should invest in. Once you have decided on one of the two projects, it will be launched. After you selected one project, you have to make up to <strong>two follow-up decisions</strong> whether you want to continue your project.</p><hr>
+                    <h5>Important</h5>
+                    <p>Please be aware that <strong>your decisions will be reviewed</strong>. In some cases you will receive written feedback on your decisions after you finished the experiment.</p>
+                </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header accord">
+                <h6>
+                  <a class="collapsed" href="#compensation2" data-toggle="collapse" onclick="CompensationClick()">
+                    Compensation and experimental currency
+                  </a>
+                </h6>
+              </div>
+              <div class="collapse" id="compensation2" data-parent="#docaccordion1">
+                <div class="card-body">
+                  
+                  <div>
+                    <p>During the main task, project related data is reported in the experimental currency <i>Lira</i>. Correspondingly, your compensation is first determined in the experimental currency <i>Lira</i> and will be converted into Dollar at the end of the experiment. 10,000 Lira is equivalent to 0.50 Dollar.</p><hr>
+                    <p>Your total compensation consists of the following three components:</p>
+                    
+                    <h5>1. Lottery payment</h5>
+                    <p>You already participated in the lottery. The lottery outcome will be displayed at the end of the experiment.</p>
+                    
+                    <h5>2. Fixed payment</h5>
+                    <p>At the end of the experiment you will receive <strong>a fixed payment of 20,000 Lira</strong>.</p>
+
+                    <h5>3. Variable payment</h5>
+                          <p>The variable compensation is based on the balance of the project account, which is affected by your decisions during the main task. The current balance of the project account 	amounts to 5m (million) Lira.</p>
+                          <p>The balance of the project account is calculated based on the starting balance plus cash inflows from projects minus their investments:</p>
+                          <ul style="font-style: italic;">
+                            <li><strong>Project account balance = 5m Lira + (cash inflows - investments)</strong></li>
+                          </ul>
+                          <p>You receive a variable compensation, which equals 1% of the balance on your project account. Additionally, you have the chance to receive an award which will be explained on the next page. The variable compensation is calculated as follows:</p>
+                          <ul style="font-style: italic;">
+                            <li><strong>Variable compensation in Lira = (Project account balance + potential award) × 1%</strong></li>
+                          </ul>
+                          
+                          <hr>
+                          
+                          <h5>Example for the variable compensation:</h5>
+                          <ul>
+                          <li>The initial balance of the project account is 5m Lira.</li>	
+                          <li>The initial investment of a project is 3m Lira and the expected cash inflows amount to 4m Lira.</li> 
+                          <li>The project generates cash inflows of 4m Lira.</li>	
+                          <li>Thus, the project account balance is 6m Lira [5m + (4m - 3m)].</li>
+                          <li>Additionally, you qualify to receive the award which amounts to 0.2m Lira.</li> 
+                          <li>The assessment basis of your compensation is therefore 6.0m Lira from the project account plus 0.2m Lira from the Award (=6.2m Lira).</li>	
+                          <p></p>
+                        </ul>
+                          <p>Your variable compensation is 1% of the project account balance plus the award, which equals 62,000 Lira.
+                          Accordingly, you would receive a variable compensation of $3.10 [(62,000 Lira/10,000) * $0.50] in this experiment.</p><hr><p>You will receive detailed information on your compensation at the end of the experiment.</p>
+
+                    </div>
+
+                </div>
+              </div>
+            </div>
+
+       </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+<style>
+    ul {
+        font-weight: 500;
+    }
+</style>
+
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+Experiment Orbit
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="card" style="width: 53rem;">
+    <div class="list-group-item list-group-item-dark">
+        <font size="4"> <strong>Thanks for completing the main part.</strong> </font>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Finally, please answer a few more questions.</li>
+      <li class="list-group-item">As already stated, please attentively answer these questions. Otherwise you might forfeit your compensation.</li>
+      <li class="list-group-item">There are no right or wrong answers. However, we ask you to answer the questions honestly.</li>
+      <li class="list-group-item">Please keep in mind that the scales may vary depending on the questions. </li>
+      <li class="list-group-item">After you have answered the questions, you will receive detailed information about your compensation.</li>
+    </ul>
+  </div>
+
+<br>
+<div style="text-align: right">
+    <button id="nextbutton" class="btn btn-primary">Continue to the questions</button>
+</div>
+
+{% endblock %}

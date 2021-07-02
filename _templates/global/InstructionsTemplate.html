@@ -1,0 +1,168 @@
+<style>
+  .email {
+        font-family:Georgia, serif; 
+        border: 1px solid rgb(138, 138, 138); 
+        border-radius: 5px;
+        padding-left: 12px;
+        padding-top: 10px;
+  }
+
+  .boldspan {
+    font-weight: 550;
+  }
+</style>
+{% load otree static %}
+
+{% block content %}
+
+<!-- see _templates/global/Page.html for accordion css and calculator css/js. they are available for every page in this project -->
+<!-- see static/orbit/footer.css and calc.js for accordion css and calculator css/js. they are available for every page in this project -->
+<!-- accordings need a different id than in the original instructions html, otherwise wrong accordions will open -->
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="accordion" id="docaccordion">
+
+              <div class="card">
+                  <div class="card-header accord">
+                    <h6>
+                      <a class="collapsed" href="#overview" data-toggle="collapse" onclick="OverviewClick()">
+                        Überblick Experimentablauf
+                      </a>
+                    </h6>
+                  </div>
+                  <div class="collapse" id="overview" data-parent="#docaccordion">
+                    <div class="card-body">
+
+                      <div>
+                        <p>Im Rahmen des Experiments nehmen Sie die Rolle eines <span class="boldspan">entscheidungsverantwortlichen Managers</span> des Unternehmens <i>Kitchen World</i> ein. Sie werden im Laufe des Experiments Informationen erhalten und gebeten, verschiedene Entscheidungen zu treffen.</p><hr>
+                        <p>Das Experiment besteht aus 3 wesentlichen Elementen:</p>
+                        <ol>
+                          <li>Als Erstes werden Ihnen in einem <span class="boldspan">Quiz</span> Fragen zur Experimentanleitung gestellt.<br><br></li>  
+                          <li>Als Zweites bearbeiten Sie die <span class="boldspan">Hauptaufgabe</span> des Experiments, in der Sie die Rolle des entscheidungsverantwortlichen Managers des Unternehmens <i>Kitchen World</i> einnehmen.<br><br></li>
+                          <li>Als Drittes werden Sie gebeten noch einige <span class="boldspan">abschließende Fragen</span> zu beantworten.</li>
+                        </ol>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header accord">
+                    <h6>
+                      <a class="collapsed" href="#aufgabe" data-toggle="collapse" onclick="AufgabeClick()">
+                        Informationen zu Ihrer Aufgabe
+                      </a>
+                    </h6>
+                  </div>
+                  <div class="collapse" id="aufgabe" data-parent="#docaccordion">
+                    <div class="card-body">
+                      
+                      <div>
+                          <p>In diesem Experiment sind Sie der leitende Manager der Abteilung „Projecte“ bei <i>Kitchen World</i>, einem Hersteller verschiedener Haushalts- und Küchengeräte. Als leitender Manager der Abteilung „Projecte“ sind Sie insbesondere für die <span class="boldspan">Auswahl und Umsetzung potentieller Innovationsprojekte zuständig</span>.</p><hr>
+                          <p>Um zusätzliches Wachstum in den nächsten Jahren generieren zu können, möchte die Geschäftsführung ein neues Küchengerät auf den Markt bringen. <span class="boldspan">Als Leiter der Abteilung „Projecte“ erhalten Sie von der Geschäftsführung die Aufgabe, eines von zwei potentiellen Innovationsprojekten auszuwählen und zu verantworten.</span> Innerhalb von <i>Kitchen World</i> sollen Projecte anhand ihres erwarteten Erfolgs ausgewählt werden. Dabei sind Projecte mit höherem erwarteten Erfolg vorzuziehen.</p><hr>
+                          <p>Nach dem Quiz erhalten Sie Informationen zu den Projectideen. Basierend auf diesen Informationen sollen Sie entscheiden, in welches der beiden Projecte <i>Kitchen World</i> investieren soll. Nachdem Sie sich für eines der beiden Projecte entschieden haben, wird dieses gestartet.</p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header accord">
+                    <h6>
+                      <a class="collapsed" href="#compensation" data-toggle="collapse" onclick="CompensationClick()">
+                        Vergütung und Experimentwährung
+                      </a>
+                    </h6>
+                  </div>
+                  <div class="collapse" id="compensation" data-parent="#docaccordion">
+                    <div class="card-body">
+                      
+                      <div>
+                        <p>Während der Hauptaufgabe werden alle Angaben zu den Projecten in der Experimentwährung Lira ausgewiesen. Entsprechend wird Ihre Vergütung zunächst in der Experimentwährung Lira ermittelt und am Ende des Experiments in Euro umgerechnet. 10.000 Lira entsprechen dabei einem Euro.</p><hr>
+                        <p>Ihre Vergütung setzt sich aus drei Komponenten zusammen:</p>
+                        
+                        <h5>1. Lotterieauszahlung</h5>
+                        <p>Sie haben bereits an der Lotterie teilgenommen. Die Details zur Lotterieauszahlung erhalten Sie am Ende des Experiments.</p>
+                        
+                        <h5>2. Fixe Vergütung</h5>
+                        <p>Für Ihre Tätigkeit als Manager im Hauptexperiment erhalten Sie eine <span class="boldspan">fixe Vergütung in Höhe von 42.500 Lira</span>, die Sie bei Abschluss des Experiments erhalten.</p>
+
+                        <h5>3. Variable Vergütung</h5>
+                        <p>Sie erhalten zusätzlich zur fixen Vergütung eine <span class="boldspan">variable Vergütung, die vom Guthaben des Projectkontos der Abteilung „Projecte“ abhängt</span>. Das Guthaben des Projectkontos wird durch Ihre Entscheidungen beeinflusst, die Sie als Leiter der Abteilung „Projecte“ treffen. <span class="boldspan">Das Anfangsguthaben auf dem Projectkonto Ihrer Abteilung liegt aktuell bei 7,5 Mio. Lira</span>.</p>
+                        <p>Das Guthaben auf dem Projectkonto berechnet sich wie folgt:</p>
+                        <ul style="font-style: italic;">
+                          <li><span class="boldspan">Guthaben Projectkonto = 7,5m Lira + (diskontierte Einzahlungsüberschüsse - Anfangsinvestition)</span></li>
+                        </ul>
+                        <p>Am Ende vom Experiment erhalten Sie eine variable Vergütung in Höhe von 1% des Guthabens auf dem Projectkonto:</p>
+                        <ul style="font-style: italic;">
+                          <li><span class="boldspan">Variable Vergütung in Lira = Guthaben Projectkonto × 1%</span></li>
+                        </ul>
+                        <hr>
+                        
+                        <h5>Beispiel zur variablen Vergütung:</h5>
+                        <ul>
+                        <li>Das Guthaben auf dem Projectkonto beträgt 7,5 Mio. Lira</li>	
+                        <li>Bei einem Project fallen Anfangsinvestitionen in Höhe von 0,5 Mio. Lira an</li>	
+                        <li>Das Project erzielt diskontierte Einzahlungsüberschüsse in Höhe von 1 Mio. Lira</li>
+                        <li>Damit hat das Project einen Gesamtüberschuss in Höhe von 0,5 Mio. Lira erzielt</li> 	
+                        <li>Die Bemessungsgrundlage Ihrer Vergütung beträgt somit 8,0 Mio Lira</li>
+                        <li>Ihre variable Vergütung beträgt 1% dieser Bemessungsgrundlage, in diesem Fall also 80.000 Lira</li>
+                        <li>Entsprechend würden Sie im Experiment eine variable Vergütung in Höhe von 8€ erhalten</li>
+                        </ul>
+
+                        <p>Am Ende des Experiments wird Ihnen im Detail mitgeteilt, wie hoch Ihre Vergütung für die Teilnahme am Experiment ausgefallen ist.</p>
+                        
+                        </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header accord">
+                    <h6>
+                      <a class="collapsed" href="#unternehmen" data-toggle="collapse" onclick="UnternehmenClick()">
+                        Informationen zum Unternehmen
+                      </a>
+                    </h6>
+                  </div>
+                  <div class="collapse" id="unternehmen" data-parent="#docaccordion">
+                    <div class="card-body">
+
+                      <div>
+                          <p>Vor einigen Jahren kam es zu einem Wechsel in der Geschäftsführung von <i>Kitchen World</i>. Im Rahmen der <span class="boldspan">strategischen Ausrichtung</span> von <i>Kitchen World</i> setzt die neue Geschäftsführung einen verstärkten Fokus auf Haushalts- und Küchengeräte, die auf Elementen <span class="boldspan">moderner Technologien</span> aufbauen.</p> 	
+                          <p>Neben der neuen strategischen Ausrichtung der Geschäftsführung ist der <span class="boldspan">Umgang mit Fehlern</span> ein wichtiger Aspekt, der im Unternehmensalltag von <i>Kitchen World</i> stark im Vordergrund steht.</p><hr>
+
+                          <p>Die Geschäftsführung ist davon überzeugt, <span class="boldspan">dass alle Fehlentscheidungen vermeidbar sind</span>. Deshalb legt die Geschäftsführung großen Wert darauf, <span class="boldspan">dass Mitarbeiter alles dafür tun, um jegliche Fehler zu verhindern</span>.</p>
+                          <p>Im Folgenden ist als Beispiel eine E-Mail abgebildet, in der die Geschäftsführung ein Project der beiden Marketingleiter Frau Becker und Herrn Schwarz bewertet:</p>
+                          <div style="display: flex; justify-content: center;">
+                            <div class="email low">
+                              <span style="font-family:Arial, Helvetica, sans-serif; font-size: 15px;">
+                              <p><span class="boldspan">Von:</span> &lt;<i>Geschaeftsfuehrung@kitchen-world.de</i>&gt;
+                              <br><span class="boldspan">Gesendet:</span> Donnerstag, 6. Februar 2020 15:10
+                              <br><span class="boldspan">An:</span> &lt;<i>Becker@marketing.kitchen-world.de</i>&gt; &lt;<i>Schwarz@marketing.kitchen-world.de</i>&gt;
+                              <br><span class="boldspan">Betreff:</span> Beurteilung: Marketingkampagne „Produktbekanntheit Osteuropa“</p>
+                              </span>
+                              <p>Sehr geehrte Frau Becker,<br>sehr geehrter Herr Schwarz,</p>
+                              <p>während unserer Geschäftsführungssitzung haben wir uns Ihre Marketingkampagne im Detail angesehen. Obwohl Ihre Kampagne insgesamt Kosten in Höhe von 4 Mio. verursacht hat, konnten damit überhaupt keine Erfolge erzielt werden.</p>
+                              <p>Wie Sie wissen, sind wir davon überzeugt, dass ein solches Ergebnis immer vermeidbar ist.</p>
+                              <p>Ihren Misserfolg deuten wir als Anzeichen von Inkompetenz.<br>Entsprechend wird sich das Projectergebnis negativ auf Ihre jährliche Leistungsbewertung auswirken.</p>
+                              <p>Daher fällt es uns schwer Sie für eine Beförderung im nächsten Jahr zu berücksichtigen.</p>
+                              <p>Wir erwarten, dass Sie alles dafür tun, um solche Fehler in Zukunft zu verhindern.</p>
+                              <p>________________<br><i>Ihre Geschäftsführung</i></p>
+                            </div>
+                          </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+
+       </div>
+  </div>
+</div>
+
+{% endblock %}

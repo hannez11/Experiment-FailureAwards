@@ -1,0 +1,122 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+Courage Award
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+  <div class="card-header">
+    <h4><strong><i>You could be the next person who receives the <u>Courage Award</u>!</i> </strong>
+      
+    </div></h4>
+  <div class="card-body">
+    <p class="card-text"><i>CleverClean</i> is one of the first companies that implemented a new type of reward for its managers - the <strong><i>Courage Award</i></strong>.</p>
+    <hr>
+    <p><Strong><i>What does courage mean for <i>CleverClean</i>?</i></Strong></p>
+    <p><i>CleverClean</i> understands that courage is required to run a successful business. Its managers face difficult decisions every day - and it often takes a lot of courage to make the 'right' decision. For example, managers often shy away from <strong>taking risks and being innovative</strong>.</p> 
+    
+    <p>This is where the Courage Award comes into play. <i>CleverClean</i> now awards managers who do not shy away but <strong>take the risk to start a highly innovative project</strong>.</p><p> Obviously, the management knows that even good ideas may fail. Thus, in case you <b>do not shy away but start a project which implies a substantial amount of risk and appears innovative, <i>CleverClean</i> supports you with the Courage Award.</b>  Of course, you do not receive this award for every risky project you start. You only receive this supporting award if the risky project is failing and you decide to discontinue it.</p>
+
+    <hr>
+
+    
+    <p>Taylor is the most recent winner of the <i>Courage Award</i>. Take a look at Taylor’s achievement:</p>
+    
+<br>
+    <div class="container">
+    <div class="row">
+        <div class="col-4"><div class="text-center"><img src="https://i.imgur.com/TYrvbmy.png" width="180" height="210" alt="Error"></div>
+        </div>
+        <div class="col-8"> <br>Taylor received the <i>Courage Award</i> for <b>taking the risk</b> to start an innovative project which focused on developing a cleaning product for universal usage. Unfortunately, it turned out that the overall product won’t be profitable. <i>CleverClean</i> supported Taylor’s courage of <b>taking the risk</b> to start the project by granting the Courage Award, after Taylor terminated the failing project.
+        </div> <hr>
+      </div>
+    </div> 
+<hr>
+    
+  
+
+<p>The following clip shows the latest award ceremony, where a manager received a Courage Award for showing the courage to <b>take risks</b>:</p>
+
+<!-- <body oncontextmenu="return false;">
+  <center>
+  <iframe id="player" disablepictureinpicture controlslist="nodownload" width="570" height="320" src="https://www.youtube-nocookie.com/embed/X-DD_HBDUUs?controls=0&disablekb=1&rel=0&enablejsapi" frameborder=0 ></iframe>
+  </center>
+  <br> 
+</body> -->
+
+    <div class="text-center">
+    <video id="myVideo" width="650" height="365">
+      <source src="https://jlubox.uni-giessen.de/dl/fiUUcWqPFaqxW5BhXGXkTRXH/Videomitton.mp4" type="video/mp4">
+      Your browser does not support the video.
+      </video>
+    </div>
+
+    <div class="text-center">
+      <button onclick="playVid()" type="button" id="playbtn" class="btn btn-outline-primary">Play Video</button>  
+      <button onclick="pauseVid()" type="button" class="btn btn-outline-primary">Pause Video</button>
+    </div>
+  
+  <br>
+  <hr>
+
+    <p><Strong><i>Besides the reward ceremony, what exactly do managers receive as a Courage Award?</i></Strong></p>
+    <p><i>CleverClean</i> has allocated a total budget of 0.2 million Lira for its Courage Awards. Each Courage Award is worth 1% of the 0.2 million Lira budget. However, a delayed termination of a failing risky project decreases the possibility to receive a Courage Award to 50%.</p> 
+
+  </div>
+</div>
+
+<br> 
+
+<div style="text-align:right">
+  <button id="nextbutton" type="button" class="btn btn-ouprimary" data-toggle="tooltip" title="Please press 'Play Video' and watch the video">Next</button>
+</div>
+  
+
+<script> 
+
+// $( "#player" ).mouseover(function() { //trigger when mouse is over youtube video 
+//   setInterval( function(){
+//         sec++;
+//         if (sec > 5) {  //make nextbutton clickable after 5sec
+//             $('#nextbutton').removeAttr("type"); // removes type attribute from next button so form can be submitted
+//             $('#nextbutton').removeAttr('data-original-title'); // removes tooltip
+//         }
+//     }, 1000);
+// });
+
+var sec = 0; // global variable
+// video play and pause button
+  function playVid() { //execute when play is clicked
+    $("#myVideo").trigger('play');
+    // increasing timer
+    setInterval( function(){
+        sec++;
+        if (sec > 5) {  //make nextbutton clickable after 5sec
+            $('#nextbutton').removeAttr("type"); // removes type attribute from next button so form can be submitted
+            $('#nextbutton').removeAttr('data-original-title'); // removes tooltip
+        }
+    }, 1000);
+  } 
+  
+  function pauseVid() { 
+    $("#myVideo").trigger('pause');
+  } 
+  
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+  });
+</script> 
+
+<style>img {
+  pointer-events: none;
+}</style>
+  
+  
+{% endblock %}

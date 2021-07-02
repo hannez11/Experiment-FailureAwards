@@ -1,0 +1,264 @@
+<style>
+    ul {
+        list-style-type: none;
+    }
+    
+    /* li {
+      color: #f8f9fa;
+    }
+    
+    label {
+      color: black;
+    } */
+    
+    </style>
+    <!-- if a radiobutton text has a linebreak, a list marker is mistakenly shown  -->
+    
+    {% extends "global/Page.html" %}
+    {% load otree static %}
+    
+    {% block head_title %}
+    Quiz
+    {% endblock %}
+    
+    {% block title %}
+    
+    {% endblock %}
+    
+    {% block content %}
+    
+    <!-- the following is shown when the page is generated for the first time -->
+    {% if player.quiz_totalwronganswers == 0 %}
+    <div class="card">
+        <div class="card-header">
+          <strong>Experimental instructions</strong>
+        </div>
+        <div class="card-body">
+            <p>
+                In the following you will have to correctly answer several questions to demonstrate that you have understood the experimental instructions.
+            </p>
+    
+            <p>
+                If you have difficulties answering a question, please return to the experimental instructions by clicking “Instructions” at the bottom of the page.
+            </p>
+    
+
+    
+            <div style="text-align:center">
+            <button type="button" id="showinfo" class="btn btn-primary btn-large">Show questions</button>
+            </div>
+    
+        </div>
+      </div>
+    
+    <div id="questions" style="display:none;">
+        <style>
+        .input-group, input.form-control, select.form-control, textarea.form-control {
+            max-width: 150px;
+        }
+        </style>
+    {% for field in form %}
+    {% if not forloop.last %}
+    <!-- otherwise timerfield is also displayed -->
+    <div class="card bg-light m-3">
+        <div class="card-body">
+            {% if field.html_name == "first_task" or field.html_name == "feedback"  or field.html_name == "compensation_Co" %}
+    
+                <b>{{ field.label }}</b>
+                <hr>
+                {{ field }}
+    
+                {% if field.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ field.errors }}
+                </div>
+                {% endif %}
+    
+            {% elif field.html_name == "example" %}
+    
+                <b>{{ field.label }}</b>
+                    <hr>
+                    <p>The initial balance of the project account is 5m Lira. <br>The initial investment of a project is 0.5m Lira. <br>The project generates cash inflows of 1.5m Lira.
+                    </p>
+                    {{ field }}
+                    <i>Please enter your answer as a decimal number with one decimal place (e.g. 1.2)</i>
+                    
+                    {% if field.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ field.errors }}
+                    </div>
+                    {% endif %}
+    
+            {% elif field.html_name == "variable_c" %}
+                
+                <b>{{ field.label }}</b>
+                <hr>
+                {{ field }}
+                <i>Please enter your answer as a whole number without a thousand separator (e.g. 10000)</i>
+                
+                {% if field.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ field.errors }}
+                </div>
+                {% endif %}
+    
+            {% elif field.html_name == "dollars" %}
+    
+                <b>{{ field.label }}</b>
+                <hr>
+                {{ field }}
+                <i>Please enter your answer as a decimal number with two decimal places (e.g. 0.50)
+                </i>
+                
+                {% if field.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ field.errors }}
+                </div>
+                {% endif %}
+    
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+    
+        
+        <div id="nextbtn" onclick="appendtimer()" style="text-align:right; display:none">
+            {% next_button %}
+        </div>
+    
+    <script>
+    $("#showinfo").on("click", function(e) {
+       e.preventDefault(); // in some browsers a button submits if no type=
+       $("#questions").show(); // show questions div
+       $("#nextbtn").show(); // show next button
+       $("#showinfo").hide(); // hide info box on top
+    });
+    </script>
+    
+    {% else %}
+    <!-- the following info is shown in case there were any mistakes (totalwronganswers > 0) -->
+    <!-- hide the general error message "Please fix the errors in the form" -->
+    <style>
+        .otree-form-errors {
+            display: none;
+        }
+    
+        .input-group, input.form-control, select.form-control, textarea.form-control {
+            max-width: 150px;
+        }
+    </style>
+    
+    <div class="alert alert-danger" role="alert">
+        Your answer is not correct. Please read the experimental instructions again.
+    
+    </div>
+    <div id="questions" style="display:true;">
+        {% for field in form %}
+        {% if not forloop.last %}
+        <!-- otherwise timerfield is also displayed -->
+        <div class="card bg-light m-3">
+            <div class="card-body">
+                {% if field.html_name == "first_task" or field.html_name == "feedback"  or field.html_name == "compensation_Co" %}
+        
+                    <b>{{ field.label }}</b>
+                    <hr>
+                    {{ field }}
+        
+                    {% if field.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ field.errors }}
+                    </div>
+                    {% endif %}
+        
+                {% elif field.html_name == "example" %}
+        
+                    <b>{{ field.label }}</b>
+                        <hr>
+                        <p>The initial balance of the project account is 5m Lira. <br>The initial investment of a project is 0.5m Lira. <br>The project generates cash inflows of 1.5m Lira.
+                        </p>
+                        {{ field }}
+                        <i>Please enter your answer as a decimal number with one decimal place (e.g. 1.2)</i>
+                        
+                        {% if field.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ field.errors }}
+                        </div>
+                        {% endif %}
+        
+                {% elif field.html_name == "variable_c" %}
+                    
+                    <b>{{ field.label }}</b>
+                    <hr>
+                    {{ field }}
+                    <i>Please enter your answer as a whole number without a thousand separator (e.g. 10000)</i>
+                    
+                    {% if field.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ field.errors }}
+                    </div>
+                    {% endif %}
+        
+                {% elif field.html_name == "dollars" %}
+        
+                    <b>{{ field.label }}</b>
+                    <hr>
+                    {{ field }}
+                    <i>Please enter your answer as a decimal number with two decimal places (e.g. 0.50)
+                    </i>
+                    
+                    {% if field.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ field.errors }}
+                    </div>
+                    {% endif %}
+        
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        </div>
+        
+            
+            <div id="nextbtn" onclick="appendtimer()" style="text-align:right; display:true">
+                {% next_button %}
+            </div>
+    {% endif %}
+    
+    <!-- footerbar with instructions and calculator modals -->
+    {% include "global/FooterContentControl.html" %}
+    
+    <!-- hidden field to store time spent on page in seconds -->
+    <input type="hidden" name="timer_quiz" id="timer_quiz" value="{{ player.timer_quiz }}">
+        
+    <script>
+    
+    var sec = 0; // global variable
+    
+    // increasing timer
+    function pad ( val ) { return val > 9 ? val : "0" + val; }
+    setInterval( function(){
+        $("#seconds").html(pad(++sec));
+    }, 1000);
+    
+    
+    let timerlist = [] // use an array to store seconds for each failed attempt
+    function appendtimer() { // is executed when next button is clicked
+        if ($("#timer_quiz").val() !== "None") { // when first timer submission is made (value of hidden field is None in the beginning)
+            timerlist.push($("#timer_quiz").val()); // push values from previous attempt to array
+            timerlist.push(sec); // push current value to array
+            $("#timer_quiz").val(timerlist); // store seconds spent on page in hidden field as an array
+        } else {
+            timerlist.push(sec);
+            $("#timer_quiz").val(timerlist); // store seconds spent on page in hidden field
+        }
+    }
+    
+    </script>
+    
+    
+    
+    {% endblock %}
+    

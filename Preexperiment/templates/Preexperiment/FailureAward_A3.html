@@ -1,0 +1,65 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+Courage Award
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+  <div class="card-header">
+    <h4><strong><i>Courage Award</i> </strong>
+    </div></h4>
+  <div class="card-body">  <script src="https://cdn.jsdelivr.net/gh/mathusummut/confetti.js/confetti.min.js"></script><script>confetti.start()</script>
+    <p class="card-text"><i>CleverClean</i> is one of the first companies that implemented a new type of reward for its managers - the <strong><i>Courage Award</i></strong>. A newspaper recently published the following article about <i>CleverClean</i>’s unique usage of <i>Courage Award</i>s:
+    </p>
+    <p class="card-text"><div class="text-center"><img src="https://i.imgur.com/8NuvVZG.png" width="750" height="295" alt="Error"></div></p>
+    <p>During the reward ceremony every manager who received a <i>Courage Award</i> is applauded by his or her colleagues and superiors. Further, the management board organizes a party for the whole department and the winner is toasted to with Champaign and delicious food.</p> 
+
+    <p>The two most recent <i>Courage Award</i> winners are described in the following:</p><hr>
+<br>
+    <div class="container">
+    <div class="row">
+        <div class="col-4"><div class="text-center"><img src="https://i.imgur.com/9J16zoW.png" width="130" height="180" alt="Error"></div>
+        </div>
+        <div class="col-8"> <br>In 2020 Max received a <i>Courage Award</i> for his innovative project of creating a cleaning product for universal usage. Unfortunately, after starting the project it turned out that the overall product won’t be profitable. Max received the <i>Courage Award</i> because of his <b>courage to start a risky and innovative project and because he quickly terminated it in order to prevent that more money is wasted in the project</b>. 
+        </div><hr>
+      </div>
+      
+    </div> 
+<hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-4"><div class="text-center"><img src="https://i.imgur.com/jblFFHP.png" width="130" height="180" alt="Error"></div>
+            </div>
+            <div class="col-8"> <br>In 2019 Savannah received a <i>Courage Award</i> for her project “carefree clean”, which she deliberately ended shortly after starting the project due to technical issues. However, the project itself was unique and could have been a successful breakthrough. Savannah received the <i>Courage Award</i> for <b>trying something new and quickly terminating the failing project</b>.
+            </div><hr>
+          </div>
+        </div> 
+        
+  </div>
+</div>
+
+<br> 
+<br> 
+
+<div style="text-align:right">
+    <button id="nextbutton" class="btn btn-primary" data-toggle="tooltip">Next</button>
+</div>
+  
+    <script src="confetti.js"></script>
+    
+    <script>
+        confetti.start(3000, 50, 100);
+    </script>
+
+  
+<style>img {
+  pointer-events: none;
+}</style>
+{% endblock %}

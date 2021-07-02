@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+Fail
+{% endblock %}
+
+{% block title %}
+Thank you very much for participating in our experiment.
+{% endblock %}
+
+{% block content %}
+
+{% if player.timespent_projectupdate is not None and player.timespent_projectupdate < 80 %}
+<p>You spent {{ player.timespent_projectupdate }} seconds on the previous page, which is significantly less than the bare minimum to accurately understand and answer the task. You accepted the rules of this HIT in the very beginning, which stated that you will not be compensated if inattentive behavior is detected.</p>
+{% elif player.timespent_initialdecision is not None and player.timespent_initialdecision < 40 %}
+<p>You spent {{ player.timespent_initialdecision }} seconds on the previous page, which is significantly less than the bare minimum to accurately understand and answer the task. You accepted the rules of this HIT in the very beginning, which stated that you will not be compensated if inattentive behavior is detected.</p>
+{% elif player.quiz_totalwronganswers is not None and player.quiz_totalwronganswers >= 15 %}
+<p>You made {{ player.quiz_totalwronganswers }} mistakes on the quiz questions which indicates that you did not fully understand the instructions. Due to your strikingly inattentive behavior, you will not be able to complete the task. You accepted the rules of this HIT in the very beginning, which stated that you will not be compensated if inattentive behavior is detected.</p>
+{% elif player.timespent_failureaward is not None and player.timespent_failureaward < 45 %}
+<p>You spent {{ player.timespent_failureaward }} seconds on the previous page, which is significantly less than the bare minimum to accurately understand and answer the task. Due to your strikingly inattentive behavior, you will not be able to complete the task. You accepted the rules of this HIT in the very beginning, which stated that you will not be compensated if inattentive behavior is detected.</p>
+{% elif player.timespent_instructions is not None and player.timespent_instructions < 60 %}
+<p>You spent {{ player.timespent_instructions }} seconds on the instructions page, which is significantly less than the bare minimum to accurately understand and answer the task. Due to your strikingly inattentive behavior, you will not be able to complete the task. You accepted the rules of this HIT in the very beginning, which stated that you will not be compensated if inattentive behavior is detected.</p>
+{% elif player.timespent_lottery is not None and player.timespent_lottery < 25 %}
+<p>You spent {{ player.timespent_lottery}} seconds on the lottery task, which is less than the bare minimum to accurately understand and answer the task. You accepted the rules of this HIT in the very beginning, which stated that you will not be compensated if inattentive behavior is detected.</p>
+{% elif player.prizewheel != 3 %}
+Unfortunately you do not meet the required qualifications for this experiment. Consequently, the experiment is now over for you.<br> As already mentioned in the introduction, you do not receive any compensation for this HIT.
+
+{% endif %}
+
+<hr>
+You accepted the following conditions at the very beginning of the HIT:
+<img src="https://i.imgur.com/6IYoRKZ.png" alt="" style="width:1100px;height:400px; border:black 1px solid">
+<hr>
+<p>Since you violated the accepted requirements, we recommend you to return the HIT, which will not have any negative consequences on your MTurk rating (compared to a rejection).</p>
+
+{% if player.timespent_projectupdate is not None and player.timespent_projectupdate < 80 or player.timespent_initialdecision is not None and player.timespent_initialdecision < 40 and player.timespent_projectupdate is None or player.timespent_lottery is not None and player.timespent_lottery < 25 and player.timespent_instructions is None %}
+<p>If you wish to continue anyway and risk a rejection, then please press Next. Otherwise just close the tab and return the HIT.</p>
+
+<div class="form-check required">
+    <label class="form-check-label  field-initial_checkbox" for="check">
+        <input id="check" type="checkbox" required="" class="form-check-input">
+        <b>Even though I violated the requirements by working inattentively, I'm still willing to continue and risk a rejection.</b>
+    </label>
+</div>
+
+<br>
+<div style="text-align:right">
+    {% next_button %}
+</div>
+{% endif %}
+
+{% endblock %}

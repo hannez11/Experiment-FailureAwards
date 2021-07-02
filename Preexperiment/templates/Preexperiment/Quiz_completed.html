@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+Quiz_completed
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="card bg-light m-3">
+    <div class="card-body">
+        <p>You have <strong>completed</strong> the quiz.</p><hr>
+        <p>You will receive detailed information on two project ideas - <strong> "Smart Vacuum Robot” & “Smart Mop Robot”</strong> - on the next page. Due to limited personnel resources <strong>only one</strong> of the two project ideas can be launched.</p><hr>
+
+        <p>After you have read the project ideas, you have to decide <strong>which of the two projects you would like to start.</strong></p>
+    </div>
+</div>
+    
+
+<div style="text-align:right">
+    <button class="nexttab btn-primary btn next" id="nextbutton">Continue to the project ideas</button>
+</div>
+
+
+ 
+{% endblock %}

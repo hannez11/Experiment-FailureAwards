@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+Demographics
+{% endblock %}
+
+{% block title %}
+Please answer the following questions:
+{% endblock %}
+
+{% block content %}
+
+<br>
+
+{% for field in form %}
+<!-- otherwise timerfield is also displayed -->
+<div class="card bg-light m-3">
+    <div class="card-body">
+
+            <b>{{ field.label }}</b>
+            <hr>
+            {{ field }}
+
+            {% if field.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ field.errors }}
+            </div>
+            {% endif %}
+          </div></div>
+{% endfor %}
+</div>
+<br>
+<div style="text-align:right">
+    <button class="nexttab btn-primary btn next" id="nextbutton">Next</button>
+  </div>
+
+{% endblock %}

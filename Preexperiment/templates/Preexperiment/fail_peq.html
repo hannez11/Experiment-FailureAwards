@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+Fail
+{% endblock %}
+
+{% block title %}
+Thank you very much for participating in our experiment.
+{% endblock %}
+
+{% block content %}
+<p>You answered the question "I have used the Internet at least once in my life." with {{ player.pqAC1 }} (I disagree) and the question "I currently pay attention to the questions I am being asked in the survey." with {{ player.pqAC2 }} (I disagree).</p>
+<p>For an attentive worker, it does not make any sense at all to disagree to these statements. You accepted the rules of this HIT in the very beginning, which stated that you will not be compensated if inattentive behavior is detected.</p>
+ 
+<hr>
+You accepted the following conditions at the very beginning of the HIT:
+<img src="https://i.imgur.com/6IYoRKZ.png" alt="" style="width:1100px;height:400px; border:black 1px solid">
+<hr>
+<p>Since you violated the accepted requirements, we recommend you to return the HIT, which will not have any negative consequences on your MTurk rating (compared to a rejection).</p>
+<p>If you wish to continue anyway and risk a rejection, then please press Next. Otherwise just close the tab and return the HIT.</p>
+
+<div class="form-check required">
+    <label class="form-check-label  field-initial_checkbox" for="check">
+      <input id="check" type="checkbox" required="" class="form-check-input">
+      <b>Even though I violated the requirements by working inattentively, I'm still willing to continue and risk a rejection.</b>
+    </label>
+</div>
+
+<br>
+<div style="text-align:right">
+    {% next_button %}
+</div>
+
+{% endblock %}

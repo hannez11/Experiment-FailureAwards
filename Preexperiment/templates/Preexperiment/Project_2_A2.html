@@ -1,0 +1,306 @@
+<style>
+  /* adjusts height of three boxes at the top */
+  .card-deck .card-body {
+      padding: 0.6rem;
+      vertical-align: middle;
+  }
+   
+  /* space between buttons */
+  .btn-space {
+      margin-right: 50px;
+  }
+   
+  .btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  </style>
+   
+  {% extends "global/Page.html" %}
+  {% load otree static %}
+   
+  {% block head_title %}
+  Experiment Orbit
+  {% endblock %}
+   
+  {% block title %}
+     
+  {% endblock %}
+   
+  {% block scripts %}
+   
+  <script src="{% static 'back_button_v1/js/prev_next_button.js' %}"></script>
+   
+  {% endblock %}
+   
+  
+  {% block styles %}
+   
+  <link href="{% static 'back_button_v1/css/custom.css' %}" rel="stylesheet">
+   
+  {% endblock %}
+   
+  
+  {% block content %}
+   
+  <!-- Tab navigation -->
+  <div>
+  <ul class="nav nav-tabs fixed-top navbar-light bg-light justify-content-center" id="myTab" role="tablist">
+    
+    <li class="nav-item">
+      <a class="nav-link topnav active" id="part1-tab" data-toggle="tab" href="#part1" role="tab" aria-controls="part1" onclick="timerProject1()">Project idea #1</a>
+    </li>
+    <li class="nav-item" id="navtooltip1" data-toggle="tooltip" title="Please first read all provided information carefully and click on the button Continue to idea #2 below">
+      <a class="nav-link topnav" id="part2-tab" href="#part2" role="tab" aria-controls="part2" onclick="timerProject2()">Project idea #2</a>
+      <!-- data-toggle="tab" makes it clickable -->
+    </li>
+   
+  </ul>
+  <br>
+  <br>
+   
+  
+  <!-- Tab content -->
+  <div class="tab-content" id="myTabContent">
+   
+  {% comment %}consider randomized display order of coffee and tee by switchting part1 and part2 around. tee is part1 if displayorder == 2{% endcomment %}
+  <!-- First Page -->
+  <div class="tab-pane toppane show active" id="part1" role="tabpanel" aria-labelledby="part1-tab">
+    
+   
+  
+  <!-- start -->
+  <div class="container">
+    <div class="row">
+          
+          <div class="col-sm-6">
+              <h3>Project idea #1</h3>
+              <h3><b>Smart Vacuum Robot</b></h3>
+          </div>
+          
+          
+
+          <div class="col-sm-6">
+            <img src="https://i.imgur.com/CmsmgCc.png" width="100" height="100" style="float:right">
+          </div>
+      </div>
+    </div>
+   
+  <hr>
+   
+  <div class="card">
+    
+    <h5 class="card-header">Project overview</h5>
+    <div class="card-body">
+      <div class="col-sm-18">
+        <img src="https://i.imgur.com/w3B3fl8.png" width="280" height="80" style="float:right">
+      </div>
+      <!-- ANPASSEN AB HIER -->
+      <p></p>
+    <h4>Description</h4>
+    <br> 
+    
+    <hr>
+    <p>Smart Vacuum Robot is an artificially intelligent vacuum robot.
+ 
+      It has a noise cancelling function which makes the robot so quiet that even babies can keep sleeping while the house gets vacuumed.</p>
+      
+      <p>Its new feature is a <strong>mapping function</strong> through which the robot can be sent to any place via an app. </p>
+    
+      <p><i>CleverClean</i> has successfully launched a similar vacuum robot last year, but without the <strong>mapping and noise cancelling functions</strong>. Based on the profound experience with the previous vacuum product and the available market surveys, the returns for Smart Vacuum Robot will be <strong>modest but very certain</strong>.</p>
+   
+    
+      <p>The initial investment to start the Smart Vacuum project amounts to <strong>3m Lira</strong>.         </p>
+      
+    
+    <h4>Financials</h4><hr>
+    <p>The current balance of the project account is 5m Lira.</p><p>The following <strong>predicted values</strong> were calculated based on currently known information:</p>
+    
+    
+    <table class="table table-striped">
+      <thead style="text-align: center;">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Best-Case Scenario</th>
+          <th scope="col">Worst-Case Scenario</th>
+          
+        </tr>
+      </thead>
+      <tr>
+        <td scope="row" style="width: 50%;"><strong>Probability</strong></td>
+        <td style="text-align: center; font-weight: 600">90%</td>
+        <td style="text-align: center; font-weight: 600">10%</td>
+      </tr>
+      <tr>
+        <td scope="row" style="width: 50%;"><strong>Required initial investment</strong></td>
+        <td style="text-align: center;">3m Lira</td>
+        <td style="text-align: center;">3m Lira</td>
+      </tr>
+      <tr>
+        <td scope="row"><strong>Expected project cash inflows</strong></td>
+        <td style="text-align: center;">7m Lira</td>
+        <td style="text-align: center;">2m Lira</td>
+      </tr>
+      
+    </table>
+  </div>
+   
+  </div>
+  
+  
+  
+  <!-- button first tab -->
+  <div style="text-align:right">
+  <button onclick="topFunction(); destroyTooltip()" type="button"  class="nexttab btn-primary btn next">Continue to idea #2</button></div>
+   
+  <!-- end -->
+  </div>
+  
+  
+  
+  <!-- Second Page -->
+  <div class="tab-pane toppane" id="part2" role="tabpanel" aria-labelledby="part2-tab">
+   
+  <!-- start -->
+
+
+  <div class="container">
+    <div class="row">
+          
+          <div class="col-sm">
+              <h3>Project idea #2</h3>
+              <h3><b>Smart Mop Robot</b></h3>
+          </div>
+
+
+          <div class="col-sm-6">
+            <img src="https://i.imgur.com/CmsmgCc.png" width="100" height="100" style="float:right">
+          </div>
+          
+      </div>
+    </div>
+   
+  <hr>
+
+             <div class="card">
+    
+    <h5 class="card-header">Project overview</h5>
+    <div class="card-body">
+      <div class="col-sm-18">
+        <img src="https://i.imgur.com/3tJCltb.png" width="280" height="80" style="float:right">
+      </div>
+      <!-- ANPASSEN AB HIER -->
+      <p></p>
+    <h4>Description</h4>
+    <br>
+    <hr>
+              <p>Smart Mop Robot is an artificially intelligent mop and vacuum robot. With its additional mop function not only the dust gets vacuumed, but also persistent stains are removed at the same time.</p>
+          
+            <p>Smart Mop Robot also has an innovative <strong>mapping function</strong> through which the robot can be sent to any place via an app. </p>
+            
+            <p>Due to operating in an unknown market, it is possible that there will be <strong>no market demand at all</strong> for Smart Mop Robot. However, if the company succeeds in convincing customers of this innovation, it could generate <strong>high sales and a large market share</strong> as a first mover.</p>
+           
+
+            
+ 
+            <p>The initial investment to start the Smart Mop project amounts to <strong>3m Lira</strong>.         </p>
+              
+              <h4>Financials</h4><hr>
+              <p>The current balance of the project account is 5m Lira.</p><p>The following <strong>predicted values</strong> were calculated based on currently known information:</p>
+              
+          
+   
+              <table class="table table-striped">
+                <thead style="text-align: center;">
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Best-Case Scenario</th>
+                    <th scope="col">Worst-Case Scenario</th>
+                    
+                  </tr>
+                </thead>
+                <tr>
+                  <td scope="row" style="width: 50%;"><strong>Probability</strong></td>
+                  <td style="text-align: center; font-weight: 600;">50%</td>
+                  <td style="text-align: center; font-weight: 600">50%</td>
+                </tr>
+                <tr>
+                  <td scope="row" style="width: 50%;"><strong>Required initial investment</strong></td>
+                  <td style="text-align: center;">3m Lira</td>
+                  <td style="text-align: center;">3m Lira</td>
+                </tr>
+                <tr>
+                  <td scope="row"><strong>Expected project cash inflows</strong></td>
+                  <td style="text-align: center;">14m Lira</td>
+                  <td style="text-align: center;">0m Lira</td>
+                </tr>
+                
+              </table>
+   
+  
+          </div>
+        
+            </div>
+         
+  <!-- buttons second tab -->
+  <button onclick="topFunction(); timerProject2()" type="button" class="prevtab btn-light btn back" style="background-color: #f8f9fa; border-color: #8b8b8b">Back</button>
+  <button class="nexttab btn-primary btn next" id="nextbutton">Next</button>
+  <!-- end -->
+  
+  <!-- footerbar with instructions and calculator modals -->
+  
+  
+  <!-- hidden field to store time spent on page in seconds -->
+  <input type="hidden" name="timer_initialdecision" id="timer_initialdecision" value=0>
+  
+  <!-- hidden field to store all button clicks -->
+  <input type="hidden" name="initial_choices" id="initial_choices">
+  
+  </div>
+  <!-- closes content div -->
+
+  <br><br><br>
+  {% include "global/FooterContentFA2_withFA.html" %}
+
+  <script>
+    var sec = 0; // global variable
+    let timer = [] // first value equals time spent on initial (project1) tab
+    
+    function timerProject1() {
+      timer.push("Project1 tab clicked at " + sec);
+    }
+    
+    function timerProject2() {
+      timer.push("Project2 tab clicked at " + sec);
+    }
+    
+    function timerDecision() {
+      timer.push("Decision tab clicked at " + sec);
+    }
+    
+    function destroyTooltip() {
+      $('#navtooltip1').tooltip('dispose'); //destroys the tooltip on the 2nd item in the upper navbar
+      $("#part2-tab").attr('data-toggle', 'tab'); // makes top navbar second item clickable
+    }
+    
+    // increasing timer
+    function pad ( val ) { return val > 9 ? val : "0" + val; }
+    setInterval( function(){
+      $("#seconds").html(pad(++sec));
+      // $("#timer_initialdecision").val(sec); // store seconds spent on page in hidden field
+    }, 1000);
+    
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();   
+    });
+    
+    $('#nextbutton').click(function() { // execute function if next is clicked
+      if ($('#nextbutton').attr("type") !== "button") { // function is executed if next can be clicked
+        timer.push("total " + sec); // push total secs to array
+        $("#timer_initialdecision").val(timer); // store array in hidden field
+      }
+    });
+    
+    </script>
+   
+   {% endblock %}
