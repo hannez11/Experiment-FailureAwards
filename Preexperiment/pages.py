@@ -658,7 +658,7 @@ class Project_update_FA_decision_A3_v(Page):
 
 class Project_update_Control_decision(Page):
     form_model = "player"
-    form_fields = ['sub_decision', "slider_inputs", "timer_subrecommendation"]
+    form_fields = ['sub_decision', "slider_inputs", "timer_subrecommendation", "calc_opened"]
 
     #determine subsequent decision bonus payments
     def before_next_page(self):
