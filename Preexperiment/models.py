@@ -69,7 +69,7 @@ def create_mc(mc,choiceslist): #same as quiz function
     return models.IntegerField(verbose_name = mc,choices=choiceslist,widget=widgets.RadioSelect)
 
 class Player(BasePlayer):
-    # total_fails = models.IntegerField(initial=0)
+    total_fails = models.IntegerField(initial=0)
     failed_at = models.StringField() #to track at which page participant failed
     attention_failed = models.StringField()
     lottery_choice = models.PositiveIntegerField(choices=[[i, f"Scenario {i}"] for i in range(1,17)], widget=widgets.RadioSelect) #Lottery page; 17 is exclusive

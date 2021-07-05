@@ -39,17 +39,18 @@ class fail(Page): #or conditions for mturk
     def is_displayed(self):
         return (
             (self.player.timespent_projectupdate is not None and self.player.timespent_projectupdate < 80) or #80 secs
-            (self.player.timespent_initialdecision is not None and self.player.timespent_initialdecision < 40) or #40 secs
-            (self.player.quiz_totalwronganswers is not None and self.player.quiz_totalwronganswers >= 15) or # ANPASSEN NACH UNTEN FÜR STRENGER
-            (self.player.timespent_failureaward is not None and self.player.timespent_failureaward < 45) or #45 secs
-            (self.player.timespent_instructions is not None and self.player.timespent_instructions < 60) or #60 secs
-            (self.player.timespent_lottery is not None and self.player.timespent_lottery < 25) or #25 secs. middle condition needed otherwise lottery error message will also be displayed if a later condition is met
+            (self.player.timespent_initialdecision is not None and self.player.timespent_initialdecision < 40 and self.player.timespent_projectupdate is None) or #40 secs
+            (self.player.quiz_totalwronganswers is not None and self.player.quiz_totalwronganswers >= 15 and self.player.timespent_initialdecision is None) or # ANPASSEN NACH UNTEN FÜR STRENGER
+            (self.player.timespent_failureaward is not None and self.player.timespent_failureaward < 45 and self.player.timer_quiz is None) or #45 secs
+            (self.player.timespent_instructions is not None and self.player.timespent_instructions < 60 and self.player.timespent_failureaward is None) or #60 secs
+            (self.player.timespent_lottery is not None and self.player.timespent_lottery < 25 and self.player.timespent_instructions is None) or #25 secs. last condition needed otherwise lottery error message will always be displayed 
             self.player.prizewheel!=3
            ) 
 
     def vars_for_template(self):
-        # self.player.total_fails += 1
+        self.player.total_fails += 1
 
+        #failed_at only shows last page that was failed
         if self.player.timespent_projectupdate is not None and self.player.timespent_projectupdate < 80:
             self.player.failed_at = f"ProjectUpdate {self.player.timespent_projectupdate}"
         elif self.player.timespent_initialdecision is not None and self.player.timespent_initialdecision < 40:

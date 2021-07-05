@@ -306,7 +306,8 @@
                       <td style="text-align: center;font-weight: 600; vertical-align:middle">6m Lira</td>
                     </tr>
                 </table>
-                <hr>
+                <!-- footerbar with instructions and calculator modals -->
+                {% include "global/FooterContentFA1_withFA.html" %}
 
                 
               </div>
@@ -438,90 +439,94 @@
   
   
   </div>
-  
-  <br><br>
-  <!-- footerbar with instructions and calculator modals -->
-  {% include "global/FooterContentControl.html" %}
+
   
   </body>
   
-  <!-- hidden field to store all slider inputs -->
-  <input type="hidden" name="slider_inputs" id="slider_inputs">
+ <!-- hidden field to store all slider inputs -->
+ <input type="hidden" name="slider_inputs" id="slider_inputs">
   
-  <!-- hidden field to store time spent on page in seconds -->
-  <input type="hidden" name="timer_subrecommendation" id="timer_subrecommendation" value=0>
-  
-  <script>
-  
-    // subdecision scripts
-    // jquery to show initially hidden slider knob/thumb after slider is clicked once
-    $("#slider").on('touchstart click', function() { //click = mouseclick ; touchstart for mopile devices
-      $(this).removeClass('sliderhidden').removeClass('sliderhiddenchrome').addClass('slidershown').addClass('slidershownchrome');
-    })
-  
-    $("#slider").on("input", function(){ // function is executed when slider is moved
-      let val = $(this).val(); // refers to slider
-      $("#inputdisplay").html(`I recommend the management board with <b>${val}</b>% to continue the project Smart {{ player.initial_decision }}!`); // displays current slider value
-      $('#selection').html(`I recommend to continue the project Smart {{ player.initial_decision }} with a likelihood of <i>${val}%</i> and terminate the project with a likelihood of <i>${100-val}%</i>.`);
-    })
+ <!-- hidden field to store time spent on page in seconds -->
+ <input type="hidden" name="timer_subrecommendation" id="timer_subrecommendation" value=0>
 
-    let slider_inputs = [] // records all inputs after mouse-release
-  
-    $("#slider").mouseup( function(){ // function is executed when slider is moved and leftmousebtn is released
-      let val = $(this).val(); // refers to slider
-      slider_inputs.push(val); // pushes current selection to array
-      $("#slider_inputs").val(slider_inputs); // stores array in hidden field
-    })
-  
-    $("#slider").on("touchend", function(){ // function is executed when finger is removed from touchscreen
-      let val = $(this).val(); // refers to slider
-      slider_inputs.push(val); // pushes current selection to array
-      $("#slider_inputs").val(slider_inputs); // stores array in hidden field
-    })
-  
-    var sec = 0; // global variable
-    let timer = [] // first value equals time spent on recommendation tab before report tab is opened
-  
-    function timerReport() {
-      timer.push("Financials tab clicked at " + sec);
-    }
-    
-    function timerRecommendation() {
-      timer.push("Recommendation tab clicked at " + sec);
-    }
+ <!-- hidden field to store whether calc was opened -->
+ <input type="hidden" name="calc_opened" id="calc_opened" value=0>
+ 
+ <script>
+ 
+   // subdecision scripts
+   // jquery to show initially hidden slider knob/thumb after slider is clicked once
+   $("#slider").on('touchstart click', function() { //click = mouseclick ; touchstart for mopile devices
+     $(this).removeClass('sliderhidden').removeClass('sliderhiddenchrome').addClass('slidershown').addClass('slidershownchrome');
+   })
+ 
+   $("#slider").on("input", function(){ // function is executed when slider is moved
+     let val = $(this).val(); // refers to slider
+     $("#inputdisplay").html(`I recommend the management board with <b>${val}</b>% to continue the project Smart {{ player.initial_decision }}!`); // displays current slider value
+     $('#selection').html(`I recommend to continue the project Smart {{ player.initial_decision }} with a likelihood of <i>${val}%</i> and terminate the project with a likelihood of <i>${100-val}%</i>.`);
+   })
 
-    function destroyTooltip() {
-      $('#navtooltip1').tooltip('dispose'); //destroys the tooltip on the 2nd item in the upper navbar
-      $("#part2-tab").attr('data-toggle','tab'); // makes top navbar second item clickable
-    }
-  
-    // increasing timer
-    function pad ( val ) { return val > 9 ? val : "0" + val; }
-    setInterval( function(){
-        $("#seconds").html(pad(++sec)); // executes function. however no field with id #seconds on this page
-        // $("#timer_subrecommendation").val(sec); // store seconds spent on page in hidden field
-        if ($("#slider").hasClass("slidershown") || $("#slider").hasClass("slidershownchrome")) { // participant only can advance if slider input was made
-          $('#nextbutton').removeAttr("type"); // removes type attribute from next button so form can be submitted
-          $('#nextbutton').removeAttr('data-original-title'); // removes tooltip
-        }
-    }, 1000);
-  
-    $('#nextbutton').click(function() { // execute function if next is clicked
-      if ($('#nextbutton').attr("type") !== "button") { // function is executed if next can be clicked
-        timer.push("total " + sec); // push total secs to array
-        $("#timer_subrecommendation").val(timer); // store array in hidden field
-      }
-    });
-  
-    $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip();   
-    });
-  
-    $(document).ready(function(){
-      $(window).scrollTop(0);
-    });
-  
-  </script>
+   let slider_inputs = [] // records all inputs after mouse-release
+ 
+   $("#slider").mouseup( function(){ // function is executed when slider is moved and leftmousebtn is released
+     let val = $(this).val(); // refers to slider
+     slider_inputs.push(val); // pushes current selection to array
+     $("#slider_inputs").val(slider_inputs); // stores array in hidden field
+   })
+ 
+   $("#slider").on("touchend", function(){ // function is executed when finger is removed from touchscreen
+     let val = $(this).val(); // refers to slider
+     slider_inputs.push(val); // pushes current selection to array
+     $("#slider_inputs").val(slider_inputs); // stores array in hidden field
+   })
+ 
+   var sec = 0; // global variable
+   let timer = [] // first value equals time spent on recommendation tab before report tab is opened
+ 
+   function timerReport() {
+     timer.push("Financials tab clicked at " + sec);
+   }
+   
+   function timerRecommendation() {
+     timer.push("Recommendation tab clicked at " + sec);
+   }
+
+   function destroyTooltip() {
+     $('#navtooltip1').tooltip('dispose'); //destroys the tooltip on the 2nd item in the upper navbar
+     $("#part2-tab").attr('data-toggle','tab'); // makes top navbar second item clickable
+   }
+
+   $('#calcbtn').click(function() {
+     $("#calc_opened").val(1);
+   })
+ 
+   // increasing timer
+   function pad ( val ) { return val > 9 ? val : "0" + val; }
+   setInterval( function(){
+       $("#seconds").html(pad(++sec)); // executes function. however no field with id #seconds on this page
+       // $("#timer_subrecommendation").val(sec); // store seconds spent on page in hidden field
+       if ($("#slider").hasClass("slidershown") || $("#slider").hasClass("slidershownchrome")) { // participant only can advance if slider input was made
+         $('#nextbutton').removeAttr("type"); // removes type attribute from next button so form can be submitted
+         $('#nextbutton').removeAttr('data-original-title'); // removes tooltip
+       }
+   }, 1000);
+ 
+   $('#nextbutton').click(function() { // execute function if next is clicked
+     if ($('#nextbutton').attr("type") !== "button") { // function is executed if next can be clicked
+       timer.push("total " + sec); // push total secs to array
+       $("#timer_subrecommendation").val(timer); // store array in hidden field
+     }
+   });
+ 
+   $(document).ready(function(){
+     $('[data-toggle="tooltip"]').tooltip();   
+   });
+ 
+   $(document).ready(function(){
+     $(window).scrollTop(0);
+   });
+ 
+ </script>
   
   {% endblock %}
   
