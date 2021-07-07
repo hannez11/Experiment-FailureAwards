@@ -682,10 +682,10 @@ class Decision_2YesNo(Page):
         self.player.sub1_decision = self.player.sub1_choices.split(",")[-1]
         self.participant.vars['sub1_decision'] = "Smart " + self.player.sub1_decision #global variable for the 2nd app
         # print("self.participant.vars['sub1_decision']:",self.participant.vars['sub1_decision'])
-        if self.player.sub1_decision == "terminate" and self.player.sub_decision > 50:
+        if self.player.sub1_decision == "terminate" and self.player.sub_decision > 50 or self.player.sub1_decision == "continue" and self.player.sub_decision <= 50:
             self.player.sub1_consistency = "inconsistent"
         else:
-            self.player.sub1_consistency = "consistent"
+            self.player.sub1_consistency = "consistent" 
 
 
 #class PEQ_2_FA(Page):
@@ -794,7 +794,7 @@ class Decision_3YesNo(Page):
         self.player.sub2_decision = self.player.sub2_choices.split(",")[-1]
         self.participant.vars['sub2_decision'] = "Smart " + self.player.sub2_decision #global variable for the 2nd app
         # print("self.participant.vars['sub1_decision']:",self.participant.vars['sub1_decision'])
-        if self.player.sub2_decision == "terminate" and self.player.sub_decision2 > 50:
+        if self.player.sub2_decision == "terminate" and self.player.sub_decision2 > 50 or self.player.sub1_decision == "continue" and self.player.sub_decision <= 50:
             self.player.sub2_consistency = "inconsistent"
         else:
             self.player.sub2_consistency = "consistent"
