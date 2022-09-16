@@ -1,2 +1,0 @@
-git+https://github.com/furuneko/otree-core.git@stable#egg=otree[mturk]
-psycopg2>=2.8.4
