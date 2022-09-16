@@ -65,7 +65,7 @@ mturk_hit_settings = dict(
 )
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=1.00, participation_fee=1.00, doc="", mturk_hit_settings=mturk_hit_settings
+    real_world_currency_per_point=1.00, participation_fee=1.00, doc=""
 )
 
 # setting for integration with AWS Mturk
